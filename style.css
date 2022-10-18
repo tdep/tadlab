@@ -1,0 +1,14 @@
+body {
+    background: #CCC;
+}
+title {
+    font-family: verdana;
+    color: #123
+}
+h1 {
+    font-family: verdana;
+    color: #123;
+    background-color: #aaa;
+    border-radius: 25%;
+    text-align: center;
+}
