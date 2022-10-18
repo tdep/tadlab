@@ -12,3 +12,9 @@ h1 {
     border-radius: 25%;
     text-align: center;
 }
+
+#pageHeader {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: #000;
+    text-align: center;
+}
