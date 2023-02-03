@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { closeModal } from "../modalSlice"
-import { login } from "../loginSlice"
+import { loginUser } from "../loginSlice"
 import '../../../styling/Modals.css'
-import { MenuItem } from "../MenuItem"
 
 function Login() {
   const [loginState, setLoginState] = useState({
     email: "",
     password: ""
+  })
+  const [userData, setUserData] = useState({
+    id: "",
+    username: ""
   })
 
   const dispatch = useDispatch()
@@ -19,13 +22,16 @@ function Login() {
   }
 
   const handleModalClose = (e) => {
-    let menuItem = e.target.id
-    dispatch(closeModal({ open: false, menuItem: menuItem }))
+    dispatch(closeModal({ open: false, menuItem: "" }))
     login.style.display = "none"
   }
 
-  const handleLogin = (e) => {
+  const handleLoginInput = (e) => {
     setLoginState({ ...loginState, [e.target.name]: e.target.value })
+  }
+
+  const setLogin = () => {
+    dispatch(loginUser({ id: userData.id, username: userData.username, email: loginState.email, password: loginState.password }))
   }
 
   const handleSubmit = (e) => {
@@ -41,8 +47,11 @@ function Login() {
       })
       let res = await req.json()
       if (req.ok) {
-        // dispatch(login({ email: res.email, password: res.password }))
-        console.log("logged in:", res)
+        let user = { "id": res.user.id, "username": res.user.username}
+        setUserData(user) //local state
+        setLogin() //redux state
+
+        console.log("logged in:", userData)
         handleModalClose()
       } else {
         console.log(res.error)
@@ -69,7 +78,7 @@ function Login() {
               placeholder="Enter Email" 
               name="email" 
               value={loginState.email}
-              onChange={handleLogin}
+              onChange={handleLoginInput}
               required 
             />
 
@@ -79,7 +88,7 @@ function Login() {
               placeholder="Enter Password" 
               name="password" 
               value={loginState.password}
-              onChange={handleLogin}
+              onChange={handleLoginInput}
               required 
             />
 
