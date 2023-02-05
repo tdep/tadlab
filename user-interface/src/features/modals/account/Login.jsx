@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { closeModal } from "../modalSlice"
-import { loginUser } from "../loginSlice"
+import { loginUser, loginTrigger } from "../loginSlice"
 import '../../../styling/Modals.css'
 
 function Login() {
@@ -9,29 +9,28 @@ function Login() {
     email: "",
     password: ""
   })
-  const [userData, setUserData] = useState({
-    id: "",
-    username: ""
-  })
 
+  let user
+  
   const dispatch = useDispatch()
   const item = useSelector((state) => state.modal.value)
   const login = document.getElementById("login-modal")
   if (item.open && item.menuItem === "login") {
     login.style.display = "block"
   }
-
+  
   const handleModalClose = (e) => {
     dispatch(closeModal({ open: false, menuItem: "" }))
     login.style.display = "none"
   }
-
+  
   const handleLoginInput = (e) => {
     setLoginState({ ...loginState, [e.target.name]: e.target.value })
   }
-
+  
   const setLogin = () => {
-    dispatch(loginUser({ id: userData.id, username: userData.username, email: loginState.email, password: loginState.password }))
+    dispatch(loginUser({ id: user.id, username: user.username, email: loginState.email, password: loginState.password, loggedIn: true }))
+    console.log(loginTrigger())
   }
 
   const handleSubmit = (e) => {
@@ -47,11 +46,10 @@ function Login() {
       })
       let res = await req.json()
       if (req.ok) {
-        let user = { "id": res.user.id, "username": res.user.username}
-        setUserData(user) //local state
+        user = { "id": res.user.id, "username": res.user.username}
         setLogin() //redux state
 
-        console.log("logged in:", userData)
+        // console.log("logged in:", user)
         handleModalClose()
       } else {
         console.log(res.error)

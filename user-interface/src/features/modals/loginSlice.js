@@ -8,22 +8,30 @@ export const loginSlice = createSlice({
       id: "",
       username: "",
       email: "",
-      password: ""
+      password: "",
+      loggedIn: false,
     }
   },
   reducers: {
     loginUser: (state, action) => {
       state.value = action.payload
+      console.log(state.value)
     },
     logoutUser: (state, action) => {
       state.value = action.payload
+    },
+    loginTrigger: (state,action) => {
+      state.value = action.payload
+      console.log(state.value.loggedIn)
+      return(state.value.loggedIn)
     }
   }
 })
 
 export const {
   loginUser,
-  logoutUser
+  logoutUser,
+  loginTrigger
 } = loginSlice.actions
 
 export default loginSlice.reducer

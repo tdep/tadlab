@@ -4,6 +4,35 @@
   flex-direction: row;
 }
 
+.fileContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.helpContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.accountContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.avatarContainer {
+  display: flex;
+  background-color: #3498DB;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  justify-content: center;
+  align-items: center;
+
+}
+#avatar {
+  height: 48px;
+  width: auto;
+}
+
 /* Dropdown Button */
 .dropbtn {
   background-color: #3498DB;

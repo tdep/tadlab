@@ -1,13 +1,11 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import { FileDropdowns } from '../features/modals/file/FileDropdowns'
-
-import { Counter } from '../features/modals/Counter'
-import '../styling/Navbar.css'
 import { HelpDropdowns } from '../features/modals/help/HelpDropdowns'
 import { AccountDropdowns } from '../features/modals/account/AccountDropdowns'
+import '../styling/Navbar.css'
 
 export const Navbar = () => {
+
 
   // When the user clicks on the button, toggle between hiding 
   // and showing the dropdown content
@@ -36,29 +34,45 @@ export const Navbar = () => {
       }
     }
   }
+
+  
   return (
     <>
       <nav>
         <section>
           <div className="navContent">
             <div className="navMenu">
-              <button id="fileMenu" onClick={handleFileMenu} className="dropbtn">File</button>
-              <div id="fileDropdown" className="dropdown-content">
-                <FileDropdowns />
-                <hr/>
-                <label className="switch">
-                  <input type="checkbox" />
-                  <span className="slider round">☀️ 🌙</span>
-                  <p></p>
-                </label>   
+              <div className="fileContainer">
+                <button id="fileMenu" onClick={handleFileMenu} className="dropbtn">File</button>
+                <div id="fileDropdown" className="dropdown-content">
+                  <FileDropdowns />
+                  <hr/>
+                  <label className="switch">
+                    <input type="checkbox" />
+                    <span className="slider round">☀️ 🌙</span>
+                    <p></p>
+                  </label>   
+                </div>
               </div>
-              <button id="helpMenu" onClick={handleHelpMenu} className="dropbtn">Help</button>
-              <div id="helpDropdown" className="dropdown-content">
-                <HelpDropdowns />
+              <div className="helpContainer">
+                <button id="helpMenu" onClick={handleHelpMenu} className="dropbtn">Help</button>
+                <div id="helpDropdown" className="dropdown-content">
+                  <HelpDropdowns />
+                </div>
               </div>
-              <button id="accountMenu" onClick={handleAccountMenu} className="dropbtn">Account</button>
-              <div id="accountDropdown" className="dropdown-content">
-                <AccountDropdowns />
+              <div className="accountContainer">
+                <button 
+                  id="accountMenu" 
+                  onClick={handleAccountMenu} 
+                  className="dropbtn">
+                  Account 
+                </button>
+                <div className="avatarContainer">
+                  <img id="avatar" src='../src/assets/avatar1.png' />
+                </div>
+                <div id="accountDropdown" className="dropdown-content">
+                  <AccountDropdowns />
+                </div>
               </div>
             </div>
           </div>
