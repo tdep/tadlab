@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { closeModal } from "../modalSlice"
 import { loginUser } from "../loginSlice"
@@ -6,10 +6,9 @@ import store from "../../../app/store"
 import '../../../styling/Modals.css'
 
 const allState = store.getState()
-export const isLoggedIn = allState.login.value.loggedIn
-
 
 function Login() {
+  
   const [loginState, setLoginState] = useState({
     email: "",
     password: ""
@@ -24,10 +23,13 @@ function Login() {
   if (item.open && item.menuItem === "login") {
     login.style.display = "block"
   }
-  
-  const handleModalClose = (e) => {
+
+  const loginItem = useSelector((state) => state.login.value)
+
+  const handleModalClose = () => {
     dispatch(closeModal({ open: false, menuItem: "" }))
     login.style.display = "none"
+
   }
   
   const handleLoginInput = (e) => {
@@ -35,7 +37,7 @@ function Login() {
   }
   
   const setLogin = () => {
-    dispatch(loginUser({ id: user.id, username: user.username, email: loginState.email, password: loginState.password, loggedIn: true }))
+    dispatch(loginUser({ id: user.id, username: user.username, email: loginState.email, password: loginState.password }))
   }
 
   const handleSubmit = (e) => {
@@ -55,12 +57,13 @@ function Login() {
         setLogin() //redux state
         localStorage.setItem('token', res.token)
         handleModalClose()
-        // console.log(res.token)
+        dispatch(loginUser({ loggedIn: true}))
       } else {
         console.log(res.error)
       }
     }
     login()
+    setTimeout(() => console.log(loginItem, allState), 1000)
   }
 
 

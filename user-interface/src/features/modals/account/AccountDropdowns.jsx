@@ -1,12 +1,10 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import { openModal } from '../modalSlice'
-import { isLoggedIn } from './Login'
 
 import '../../../styling/Modals.css'
 
 export function AccountDropdowns() {
-
   const dispatch = useDispatch()
 
   const handleModalOpen = (e) => {
@@ -17,7 +15,7 @@ export function AccountDropdowns() {
 
   return (
     <>
-      {isLoggedIn?
+      {false?
         <a id="login" className="menu-item" onClick={handleModalOpen}>Logout</a>:
         <a id="login" className="menu-item" onClick={handleModalOpen}>Login</a>
       }

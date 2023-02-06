@@ -51,8 +51,7 @@ function Register() {
 
 
   const handleModalClose = (e) => {
-    let menuItem = e.target.id
-    dispatch(closeModal({ open: false, menuItem: menuItem }))
+    dispatch(closeModal({ open: false, menuItem: "" }))
     register.style.display = "none"
   }
 
