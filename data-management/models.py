@@ -28,3 +28,7 @@ class User(db.Model):
 
     def __repr__(self):
         return '<User %r>' % self.username
+
+class Interface(db.model):
+    __tablename__ = 'interfaces'
+    id = db.Column(db.Integer, primary_key=True)
