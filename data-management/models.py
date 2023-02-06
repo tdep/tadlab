@@ -8,14 +8,14 @@ class User(db.Model):
     __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80), unique=True, nullable=False)
-    email = db.Column(db.String(120), unique=True, nullable=False)
+    email = db.Column(db.String(120), unique=False, nullable=False)
     password = db.Column(db.String(120), nullable=False)
     created_at = db.Column(db.DateTime, server_default=db.func.now())
     updated_at = db.Column(db.DateTime, server_default=db.func.now(), server_onupdate=db.func.now())
 
     def toJSON(self):
         return {"id": self.id, "username": self.username, "email": self.email, "password": self.password}
-        
+
     def __init__(self, username, email, password):
         self.username = username
         self.email = email
@@ -42,6 +42,12 @@ class Interface(db.Model):
 
     def __init__(self, interfaceName):
         self.interfaceName = interfaceName
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'interfaceName': self.interfaceName
+        }
 
     def __repr__(self):
         return '<Interface %r' % self.interfaceName

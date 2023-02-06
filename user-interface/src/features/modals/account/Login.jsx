@@ -40,7 +40,6 @@ function Login() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    const token = localStorage.getItem('token')
     const login = async () => {
       let req = await fetch('http://localhost:3001/login', {
         method: 'POST',
@@ -55,8 +54,8 @@ function Login() {
         user = { "id": res.user.id, "username": res.user.username}
         setLogin() //redux state
         localStorage.setItem('token', res.token)
-        // console.log("logged in:", user)
         handleModalClose()
+        // console.log(res.token)
       } else {
         console.log(res.error)
       }

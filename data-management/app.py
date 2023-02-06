@@ -4,7 +4,6 @@ from flask_migrate import Migrate
 from flask_cors import CORS
 from config import Config
 from models import db, User, Interface
-import platform
 from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required, JWTManager
 
 app = Flask(__name__, static_folder='public')
