@@ -18,16 +18,17 @@ migrate = Migrate(app, db)
 def home():
     return send_file('welcome.html')
 
+
+##### USERS #####
+
+# get a list of all users
 @app.get('/users')
 def all_users():
     users = User.query.all()
     return jsonify([user.to_dict() for user in users])
 
-@app.get('/interfaces')
-def all_interfaces():
-    interfaces = Interface.query.all()
-    return jsonify([interface.to_dict() for interface in interfaces])
 
+# login functionality
 @app.post('/login')
 def login():
     data = request.json
@@ -43,10 +44,33 @@ def login():
         else:
             return jsonify({'error': 'Invalid password'}), 422
 
-# @app.patch('/users/<int:id>')
-# def update_user(id):
-#     user = User.query.get(id)
 
+# create a new user
+@app.post('/users')
+def create_user():
+    data = request.json
+    user = User(data['username'], data['email'],
+                data['password'])
+    db.session.add(user)
+    db.session.commit()
+    return jsonify(user.toJSON()), 201
+
+# edit a user profile
+@app.patch('/users/<int:id>')
+def update_user(id):
+    data = request.json
+    user = User.query.get(id)
+
+    if user:
+        user.username = data['username']
+        user.email = data['email']
+        user.password = data['password']
+        db.session.commit()
+        return jsonify(user.toJSON()), 202
+    else:
+        return {"error" : "user not found"}, 404
+
+# delete an existing user
 @app.delete('/users/<int:id>')
 @jwt_required()
 def delete_user(id):
@@ -67,7 +91,31 @@ def delete_user(id):
 
 
 
+##### INTERFACES #####
 
+# get a list of all interfaces
+@app.get('/interfaces')
+def all_interfaces():
+    interfaces = Interface.query.all()
+    return jsonify([interface.to_dict() for interface in interfaces])
+
+# create a new interface
+
+@app.post('/interfaces')
+def add_interface():
+    data = request.json
+    interface_id = data['interface']
+    interface = Interface()
+    db.session.add(interface)
+    db.session.commit()
+    return jsonify(interface.toJSON()), 201
+
+@app.delete('/interfaces<int:interface_id>')
+def delete_interface(interface_id):
+    interface = Interface.query.get(interface_id)
+    db.session.delete(interface)
+    db.session.commit()
+    return {"msg" : "booking deleted"}, 204
 
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=os.environ.get('PORT', 3001))
