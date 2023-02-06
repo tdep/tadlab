@@ -1,14 +1,20 @@
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { closeModal } from "../modalSlice"
-import { loginUser, loginTrigger } from "../loginSlice"
+import { loginUser } from "../loginSlice"
+import store from "../../../app/store"
 import '../../../styling/Modals.css'
+
+const allState = store.getState()
+export const isLoggedIn = allState.login.value.loggedIn
+
 
 function Login() {
   const [loginState, setLoginState] = useState({
     email: "",
     password: ""
   })
+
 
   let user
   
@@ -30,7 +36,6 @@ function Login() {
   
   const setLogin = () => {
     dispatch(loginUser({ id: user.id, username: user.username, email: loginState.email, password: loginState.password, loggedIn: true }))
-    console.log(loginTrigger())
   }
 
   const handleSubmit = (e) => {

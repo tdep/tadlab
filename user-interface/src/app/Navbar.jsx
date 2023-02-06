@@ -2,11 +2,12 @@ import React from 'react'
 import { FileDropdowns } from '../features/modals/file/FileDropdowns'
 import { HelpDropdowns } from '../features/modals/help/HelpDropdowns'
 import { AccountDropdowns } from '../features/modals/account/AccountDropdowns'
+import { isLoggedIn } from '../features/modals/account/Login'
+import store from './store'
 import '../styling/Navbar.css'
 
 export const Navbar = () => {
-
-
+  
   // When the user clicks on the button, toggle between hiding 
   // and showing the dropdown content
   const handleFileMenu = (e) => {
@@ -68,7 +69,7 @@ export const Navbar = () => {
                   Account 
                 </button>
                 <div className="avatarContainer">
-                  <img id="avatar" src='../src/assets/avatar1.png' />
+                  <img id="avatar" src={isLoggedIn? '../src/assets/avatar1.png' : '../src/assets/avatar_signed_out.png' } />
                 </div>
                 <div id="accountDropdown" className="dropdown-content">
                   <AccountDropdowns />

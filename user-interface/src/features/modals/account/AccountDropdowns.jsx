@@ -1,6 +1,7 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import { openModal } from '../modalSlice'
+import { isLoggedIn } from './Login'
 
 import '../../../styling/Modals.css'
 
@@ -16,7 +17,10 @@ export function AccountDropdowns() {
 
   return (
     <>
-      <a id="login" className="menu-item" onClick={handleModalOpen}>Login</a>
+      {isLoggedIn?
+        <a id="login" className="menu-item" onClick={handleModalOpen}>Logout</a>:
+        <a id="login" className="menu-item" onClick={handleModalOpen}>Login</a>
+      }
       <br />
       <a id="register" className="menu-item" onClick={handleModalOpen}>Register</a>
     </>

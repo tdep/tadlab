@@ -15,23 +15,17 @@ export const loginSlice = createSlice({
   reducers: {
     loginUser: (state, action) => {
       state.value = action.payload
-      console.log(state.value)
+      // console.log(state.value)
     },
     logoutUser: (state, action) => {
       state.value = action.payload
     },
-    loginTrigger: (state,action) => {
-      state.value = action.payload
-      console.log(state.value.loggedIn)
-      return(state.value.loggedIn)
-    }
   }
 })
 
 export const {
   loginUser,
   logoutUser,
-  loginTrigger
 } = loginSlice.actions
 
 export default loginSlice.reducer

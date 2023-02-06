@@ -5,7 +5,6 @@ import { MenuItem } from './features/modals/MenuItem'
 import './styling/index.css'
 
 const App = () => {
-
   return(
     <Router>
       <Navbar />
