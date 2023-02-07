@@ -2,10 +2,13 @@ import React, { useState, useEffect } from 'react'
 import { FileDropdowns } from '../features/modals/file/FileDropdowns'
 import { HelpDropdowns } from '../features/modals/help/HelpDropdowns'
 import { AccountDropdowns } from '../features/modals/account/AccountDropdowns'
+import Cookies from 'js-cookie'
 import '../styling/Navbar.css'
 
 
 export const Navbar = () => {
+  const [user, setUser] = useState(null)
+
   // When the user clicks on the button, toggle between hiding 
   // and showing the dropdown content
   const handleFileMenu = () => {
@@ -18,6 +21,7 @@ export const Navbar = () => {
 
   const handleAccountMenu = () => {
     document.getElementById("accountDropdown").classList.toggle("show")
+
   }
 
   // Close the dropdown menu if the user clicks outside of it
@@ -33,6 +37,17 @@ export const Navbar = () => {
       }
     }
   }
+
+  useEffect(() => {
+    const loadUser = async () => {
+      let req = await fetch("http://127.0.0.1:3000/me", {
+        headers: { Authorization: Cookies.get('token') }
+      })
+      let res = await req.json()
+      if (res.user) setUser(res.user)
+    }
+    if (Cookies.get('token')) loadUser()
+  }, [])
 
   
   return (
@@ -70,7 +85,10 @@ export const Navbar = () => {
                   <img id="avatar" src={false ? '../src/assets/avatar1.png' : '../src/assets/avatar_signed_out.png'} />
                 </div>
                 <div id="accountDropdown" className="dropdown-content">
-                  <AccountDropdowns />
+                  <AccountDropdowns 
+                    user={user}
+                    setUser={setUser}
+                  />
                 </div>
               </div>
             </div>

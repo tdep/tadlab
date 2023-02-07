@@ -1,17 +1,46 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useRef} from "react"
 import { useDispatch, useSelector } from "react-redux"
+import { UserContext } from "./UserContext"
 import { closeModal } from "../modalSlice"
 import { loginUser } from "../loginSlice"
+import Cookies from "js-cookie"
 import '../../../styling/Modals.css'
 
 function Login() {
-  const [isLoggedIn, setisLoggedIn] = useState(false)
-  const [loginState, setLoginState] = useState({
-    email: "",
-    password: ""
-  })
   
-  let user
+  const [user, setUser] = useState(null)
+  const [loginOutToggle, setloginOutToggle] = useState(false)
+  const form = useRef()
+
+  useEffect(() => {
+    const loadUser = async () => {
+      let req = await fetch("http://127.0.0.1:3000/me", {
+        headers: { Authorization: Cookies.get('token') }
+      })
+      let res = await req.json()
+      if (res.user) setUser(res.user)
+    }
+    if (Cookies.get('token')) loadUser()
+  }, [])
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    let formData = new FormData(form.current)
+    let req = await fetch("http://127.0.0.1:3000/login", {
+      method: 'POST',
+      body: formData
+    })
+    let res = await req.json()
+    console.log("Res", res)
+    Cookies.set('token', res.token)
+    setUser(res.user)
+    handleModalClose()
+    if (user) {
+      setloginOutToggle(true)
+    } else {
+      setloginOutToggle(false)
+    }
+  }
   
   const dispatch = useDispatch()
   const item = useSelector((state) => state.modal.value)
@@ -23,55 +52,13 @@ function Login() {
   const handleModalClose = () => {
     dispatch(closeModal({ open: false, menuItem: "" }))
     login.style.display = "none"
-
   }
-  
-  const handleLoginInput = (e) => {
-    setLoginState({ ...loginState, [e.target.name]: e.target.value })
-  }
-  
-  const setLogin = () => {
-    dispatch(loginUser({ id: user.id, username: user.username, email: loginState.email, password: loginState.password }))
-  }
-
-  useEffect(() => {
-    console.log('useEffectRan')
-    logger(isLoggedIn)
-  },[isLoggedIn])
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    const login = async () => {
-      let req = await fetch('http://localhost:3001/login', {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({
-          email: loginState.email, 
-          password: loginState.password
-        })
-      })
-      let res = await req.json()
-      if (req.ok) {
-        user = { "id": res.user.id, "username": res.user.username}
-        setLogin() //redux state
-        localStorage.setItem('token', res.token)
-        setisLoggedIn(true)
-        handleModalClose()
-        dispatch(loginUser({ loggedIn: true}))
-      } else {
-        console.log(res.error)
-      }
-    }
-    login()
-  }
-
-
 
   return (
     <div id="login-modal" className="modal">
       <div className="modal-content animate">
         <span className="close" onClick={handleModalClose}>&times;</span>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} ref={form}>
           <div className="imgcontainer">
             <img src="../../../src/assets/avatar4.png" alt="Avatar" className="avatar" />
           </div>
@@ -82,9 +69,6 @@ function Login() {
               type="text" 
               placeholder="Enter Email" 
               name="email" 
-              value={loginState.email}
-              onChange={handleLoginInput}
-              required 
             />
 
             <label htmlFor="psw"><b>Password</b></label>
@@ -92,9 +76,6 @@ function Login() {
               type="password" 
               placeholder="Enter Password" 
               name="password" 
-              value={loginState.password}
-              onChange={handleLoginInput}
-              required 
             />
 
             <button type="submit" >Log-in</button>
