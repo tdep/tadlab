@@ -1,25 +1,22 @@
-import React from 'react'
-import { useEffect, useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { FileDropdowns } from '../features/modals/file/FileDropdowns'
 import { HelpDropdowns } from '../features/modals/help/HelpDropdowns'
 import { AccountDropdowns } from '../features/modals/account/AccountDropdowns'
-import store from './store'
 import '../styling/Navbar.css'
 
-const allState = store.getState()
-const loginState = allState.login.value.loggedIn
+
 export const Navbar = () => {
   // When the user clicks on the button, toggle between hiding 
   // and showing the dropdown content
-  const handleFileMenu = (e) => {
+  const handleFileMenu = () => {
     document.getElementById("fileDropdown").classList.toggle("show")
   }
 
-  const handleHelpMenu = (e) => {
+  const handleHelpMenu = () => {
     document.getElementById("helpDropdown").classList.toggle("show")
   }
 
-  const handleAccountMenu = (e) => {
+  const handleAccountMenu = () => {
     document.getElementById("accountDropdown").classList.toggle("show")
   }
 
@@ -70,7 +67,7 @@ export const Navbar = () => {
                   Account 
                 </button>
                 <div className="avatarContainer">
-                  <img id="avatar" src={loginState? '../src/assets/avatar1.png' : '../src/assets/avatar_signed_out.png' } />
+                  <img id="avatar" src={false ? '../src/assets/avatar1.png' : '../src/assets/avatar_signed_out.png'} />
                 </div>
                 <div id="accountDropdown" className="dropdown-content">
                   <AccountDropdowns />
