@@ -78,7 +78,7 @@
 }
 
 /* The Account menu */
-#account {
+.menu-card {
   display: flex;
   height: 100%;
   width: 0;
@@ -99,15 +99,15 @@
   width: 75%;
 }
 
-#account button {
+.menu-card button {
   transition: 0.2s
 }
 
-#account button:hover {
+.menu-card button:hover {
   opacity: 0.7;
 }
 
-#account h1 {
+.menu-card h1 {
   display: flex;
   color: #a5a5a5;
   font-size: 70px;
@@ -155,5 +155,27 @@
 #logout-btn {
   background-color: #8c1212;
   color: white;
+}
+
+/* About */
+
+#tad {
+  width: 100%;
+}
+
+#tad-img {
+  shape-outside: circle();
+  border-radius: 50%;
+  float: left;
+}
+
+#tad img {
+  width: 50%;
+  height: fit-content;
+  
+}
+
+#tad p {
+  text-align: justify;
 }
 
