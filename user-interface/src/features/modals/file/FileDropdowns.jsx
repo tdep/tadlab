@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import { openModal } from '../modalSlice'
-import '../../../styling/Modals.css'
+// import '../../../styling/Modals.css'
 
 export function FileDropdowns() {
   

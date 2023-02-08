@@ -1,20 +1,22 @@
-import React, { useState, useEffect } from 'react'
-import Cookies from 'js-cookie'
-import { BrowserRouter as Router } from 'react-router-dom'
+import React from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { Navbar } from './app/Navbar'
-import { MenuItem } from './features/modals/MenuItem'
-import Login from './features/modals/account/Login'
-import './styling/index.css'
+import LoginPage from './pages/LoginPage'
+import HomePage from './pages/HomePage'
+import UserPage from './pages/UserPage'
+// import './styling/index.css'
 
 const App = () => {
 
   return(
-    <Router>
-      <Navbar />
-      <div className="App">
-        <MenuItem />
-      </div>
-    </Router>
+      <BrowserRouter>
+        <Routes>
+          <Route path={'/login'} element={<LoginPage />} />
+          <Route path={'/home'} element={<HomePage />} />
+          <Route path={'/userpage'} element={<UserPage />} />
+        </Routes>
+      </BrowserRouter>
+   
   )
 }
 

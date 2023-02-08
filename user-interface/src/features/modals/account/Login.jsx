@@ -4,7 +4,7 @@ import { UserContext } from "./UserContext"
 import { closeModal } from "../modalSlice"
 import { loginUser } from "../loginSlice"
 import Cookies from "js-cookie"
-import '../../../styling/Modals.css'
+// import '../../../styling/Modals.css'
 
 function Login() {
   

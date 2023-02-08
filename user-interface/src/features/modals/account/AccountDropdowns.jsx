@@ -3,9 +3,10 @@ import { useDispatch } from 'react-redux'
 import { openModal } from '../modalSlice'
 import Cookies from 'js-cookie'
 
-import '../../../styling/Modals.css'
+// import '../../../styling/Modals.css'
+import { Link } from 'react-router-dom'
 
-export function AccountDropdowns({user, setUser}) {
+export function AccountDropdowns() {
   const dispatch = useDispatch()
   const handleModalOpen = (e) => {
     let menuItem = e.target.id
@@ -15,17 +16,13 @@ export function AccountDropdowns({user, setUser}) {
 
   const logout = () => {
     Cookies.remove('token')
-    setUser(null)
+    // setUser(null)
   }
 
   return (
     <>
-      {false?
-        <a id="logout" className="menu-item" onClick={logout}>Logout</a>:
-        <a id="login" className="menu-item" onClick={handleModalOpen}>Login</a>
-      }
-      <br />
-      <a id="register" className="menu-item" onClick={handleModalOpen}>Register</a>
+      <Link to={"/login"}><a id="logout" className="menu-item" onClick={logout}>Logout</a></Link>
+      <Link to={"/userpage"}><a id="userpage" className="menu-item" onClick={handleModalOpen}>User Settings</a></Link>
     </>
   )
 }
