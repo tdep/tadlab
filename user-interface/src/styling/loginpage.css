@@ -1,10 +1,6 @@
-* {
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-}
-
 /* The Card (background) */
 
-.login-card{
+#login-card{
   display: flex;
   position: fixed;
   z-index: 1;
@@ -25,18 +21,13 @@
   padding: 20px;
   border: 1px solid #888;
   border-radius: 10px;
-  width: 40%;
+  width: 30%;
 }
 
 /* LOGIN FORM */
 
-/* Bordered Form */
-form {
-  border: 3px solid #f1f1f1;
-}
-
 /* Full-width inputs */
-input[type=text], input[type=password] {
+.login-input {
   width: 100%;
   padding: 12px 20px;
   margin-top: 8px;
@@ -44,21 +35,6 @@ input[type=text], input[type=password] {
   display: inline-block;
   border: 1px solid #ccc;
   box-sizing: border-box;
-}
-
-/* Set a style for all buttons */
-button {
-  font-size: medium;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-}
-
-/* Add a hover effect for buttons */
-button:hover {
-  opacity: 0.8;
 }
 
 button#login-btn {
@@ -72,7 +48,7 @@ button#register-btn {
 }
 
 /* Center avatar inside this container */
-.imgcontainer {
+#imgcontainer {
   text-align: center;
   margin: 24px 0 12px 0;
 }
@@ -83,26 +59,16 @@ img.avatar {
   border-radius: 50%;
 }
 
-/* Add padding to containers */
-.container {
-  padding: 16px;
-}
-
 /* The "Forgot password text */
-span.psw {
+span#forgot-password {
   float: right;
   padding-top: 16px;
 }
 
 /* Change styles for span and cancel button on extra small screens */
 @media screen and (max-width: 300px) {
-  span.psw {
+  span#forgot-password {
     display: block;
     float: none;
   }
-}
-
-/* Add a blue text color to links */
-a {
-  color: dodgerblue
 }

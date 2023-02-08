@@ -24,25 +24,29 @@ const LoginPage = () => {
     }
   }
   return (
-    <div className="window">
-      <div className="login-card">
+    <div>
+      <div id="login-card">
         <div id="login-container" className="container">
-          <div className="imgcontainer">
+          <div id="imgcontainer">
             <img src="../../../src/assets/avatar4.png" alt="Avatar" className="avatar" />
           </div>
           <div className="form-container">
             <form onSubmit={handleSubmit} ref={form}>
 
               <div className="container">
-                <label htmlFor="uname"><b>Email</b></label>
+                <label htmlFor="email"><b>Email</b></label>
                 <input
+                  id="login-email"
+                  className="login-input"
                   type="text"
                   placeholder="Enter Email"
                   name="email"
                 />
 
-                <label htmlFor="psw"><b>Password</b></label>
+                <label htmlFor="password"><b>Password</b></label>
                 <input 
+                  id="login-password"
+                  className="login-input"
                   type="password"
                   placeholder="Enter Password"
                   name="password"
@@ -52,7 +56,7 @@ const LoginPage = () => {
                 <button type="button" id="register-btn"><b>Register</b></button>
               </div>
               {/* <div className="container" style={{background: '#f1f1f1'}}> */}
-                <span className="psw"><b>Forgot <a href="#">password?</a></b></span>
+                <span id="forgot-password"><b>Forgot <a href="#">password?</a></b></span>
               {/* </div> */}
             </form>
 

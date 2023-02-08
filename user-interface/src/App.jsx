@@ -4,7 +4,7 @@ import { Navbar } from './app/Navbar'
 import LoginPage from './pages/LoginPage'
 import HomePage from './pages/HomePage'
 import UserPage from './pages/UserPage'
-// import './styling/index.css'
+import './styling/index.css'
 
 const App = () => {
 
