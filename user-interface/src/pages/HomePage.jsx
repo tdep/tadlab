@@ -36,6 +36,7 @@ const HomePage = () => {
         <h1 className="tadlab">TADLAB</h1>
       </div>
       <div id="quickAccessContainer">
+        <h1>Quick Links</h1>
         <QuickAccess />
       </div>
       <Sidebar />

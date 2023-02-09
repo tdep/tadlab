@@ -42,12 +42,6 @@
   padding: 0;
 }
 
-#quickAccessContainer {
-  display: grid;
-  grid-template-columns: repeat(2, 400px);
-  padding: 10px
-}
-
 /* The side navigation menu */
 .sideNav {
   height: 100%;

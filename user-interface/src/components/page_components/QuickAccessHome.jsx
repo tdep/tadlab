@@ -1,13 +1,30 @@
 
 
 export const QuickAccess = () => {
-  // map to create grid?
+  const openLink = () => {
+
+  }
+
+  const tiles = [1, 2, 3]
   return (
-    <div id="quickLinks-container">
-      <div id="newProject" className="quickLinks">New Project</div>
-      <div id="openProject" className="quickLinks">Open Project</div>
-      <div id="newProject" className="quickLinks">New Project</div>
-      <div id="openProject" className="quickLinks">Open Project</div>
+    <div id="quickLinksContainer">
+      <div className="tiles">
+        {tiles.map((tile) => {
+          return(
+            <div onClick={() => {openLink()}}>
+              {
+                tiles.map((tile) => {
+                  return (
+                    <div id="newProject" className="tile">
+                      Quick Links
+                    </div>
+                  )
+                })
+              }
+            </div>
+          )
+        })}
+      </div>
     </div>
   )
 }
