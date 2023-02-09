@@ -1,6 +1,9 @@
+import '../../../src/styling/interface/modulepanel.css'
+
+
 const ADSRContainer = () => {
   return (
-    <div id="adsrContainer">
+    <div id="adsrPanel">
       <div id="adsr-1-container">
 
       </div>

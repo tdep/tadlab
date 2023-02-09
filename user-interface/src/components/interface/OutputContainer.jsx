@@ -1,13 +1,16 @@
+import '../../../src/styling/interface/modulepanel.css'
+
+
 const OutputContainer = () => {
   return (
-    <div id="outputContainer">
-      <div id="vuMeterPanel">
+    <div id="outputPanel">
+      <div id="vuMeterContainer">
 
       </div>
-      <div id="oscilloscopePanel">
+      <div id="oscilloscopeContainer">
 
       </div>
-      <div id="controlPanel">
+      <div id="controlContainer">
 
       </div>
     </div>

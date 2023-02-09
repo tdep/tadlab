@@ -1,6 +1,18 @@
+import '../../../src/styling/interface/modulepanel.css'
+
+
 const EFXContainer = () => {
   return (
-    <div id="efxContainer">
+    <div id="efxPanel">
+      <div id="reverbContainer">
+        
+      </div>
+      <div id="delayContainer">
+
+      </div>
+      <div id="tremContainer">
+
+      </div>
 
     </div>
   )
