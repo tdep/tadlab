@@ -1,9 +1,12 @@
+
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import WarningModal from "../components/page_components/WarningModal";
 import { Sidebar } from "../components/menus/Sidebar";
 import '../../src/styling/projectpage.css'
 
 const ProjectPage = () => {
+  const [modal, setModal] = useState()
   const navigate = useNavigate()
   
   const openNav = () => {
@@ -11,8 +14,9 @@ const ProjectPage = () => {
   }
   
   const handleModalOpen = () => {
-    let modal = document.getElementById('warning')
-    modal.style.display = ('block')
+    let openModal = document.getElementById('warning')
+    openModal.style.display = ('block')
+    setModal(document.getElementById('warning'))
   }
 
   const goHome = () => {
@@ -27,7 +31,7 @@ const ProjectPage = () => {
           <span onClick={goHome}>HOME</span>
         </div>
         <div id="warning" >
-          <WarningModal />
+          <WarningModal modal={modal}/>
         </div>
         <h1>PROJECT</h1>
         <h1 className="tadlab">TADLAB</h1>

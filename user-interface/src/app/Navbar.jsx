@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { AccountMenu } from '../features/modals/account/AccountMenu'
 import Cookies from 'js-cookie'
-import '../styling/Navbar.css'
+import '../styling/Sidebar.css'
 
 
 

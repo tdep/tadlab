@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import '../../../src/styling/newprojectmenu.css'
+
 export const NewProject = () => {
   const form = useRef()
   const navigate = useNavigate()

@@ -1,6 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 
+import '../../../src/styling/accountmenu.css'
+
 export const Account = () => {
   const navigate = useNavigate()
 

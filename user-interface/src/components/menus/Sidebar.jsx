@@ -2,6 +2,7 @@ import { Account } from "./Account";
 import { About } from "./About";
 import { NewProject } from "./NewProject";
 import { OpenProject } from "./OpenProject";
+import '../../../src/styling/Sidebar.css'
 
 export const Sidebar = () => {
   const closeNav = () => {

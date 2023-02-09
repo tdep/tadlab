@@ -1,3 +1,5 @@
+import '../../../src/styling/aboutmenu.css'
+
 export const About = () => {
   const closeAbout = () => {
     document.getElementById("about").style.width = "0";

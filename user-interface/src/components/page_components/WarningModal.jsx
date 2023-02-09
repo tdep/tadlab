@@ -2,10 +2,8 @@ import { useNavigate } from 'react-router-dom'
 
 import '../../../src/styling/projectpage.css'
 
-function WarningModal() {
+function WarningModal({modal}) {
   const navigate = useNavigate()
-  let modal = document.getElementById("warning")
-
   const handleModalClose = () => {
     modal.style.display = "none"
   }

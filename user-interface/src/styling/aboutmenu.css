@@ -1,0 +1,21 @@
+/* About */
+
+#tad {
+  width: 100%;
+}
+
+#tad-img {
+  shape-outside: circle();
+  border-radius: 50%;
+  float: left;
+}
+
+#tad img {
+  width: 50%;
+  height: fit-content;
+
+}
+
+#tad p {
+  text-align: justify;
+}

@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import { useDispatch } from 'react-redux'
 import { openModal } from '../modalSlice'
 import Cookies from 'js-cookie'
-import '../../../../src/styling/Navbar.css'
+import '../../../../src/styling/Sidebar.css'
 
 import { Link } from 'react-router-dom'
 
