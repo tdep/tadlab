@@ -4,6 +4,7 @@ import { Navbar } from './app/Navbar'
 import LoginPage from './pages/LoginPage'
 import HomePage from './pages/HomePage'
 import UserPage from './pages/UserPage'
+import ProjectPage from './pages/ProjectPage'
 import './styling/index.css'
 
 const App = () => {
@@ -14,6 +15,7 @@ const App = () => {
           <Route path={'/login'} element={<LoginPage />} />
           <Route path={'/home'} element={<HomePage />} />
           <Route path={'/userpage'} element={<UserPage />} />
+          <Route path={'/projectpage'} element={<ProjectPage />} />
         </Routes>
       </BrowserRouter>
    

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Sidebar } from "../components/menus/Sidebar";
+import { QuickAccess } from "../components/page_components/QuickAccessHome";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 import '../../src/styling/homepage.css'
@@ -35,8 +36,7 @@ const HomePage = () => {
         <h1 className="tadlab">TADLAB</h1>
       </div>
       <div id="quickAccessContainer">
-        <div id="newProject">New Project</div>
-        <div id="openProject">Open Project</div>
+        <QuickAccess />
       </div>
       <Sidebar />
     </div>

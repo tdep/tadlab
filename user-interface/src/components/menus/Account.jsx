@@ -29,13 +29,13 @@ export const Account = () => {
           </div>
           <div id="details">
             <div className="detail">
-              <p>Username: user.username <button>edit</button></p>
+              <p>Username: user.username </p>
             </div>
             <div className="detail">
-              <p>Email: user.email <button>edit</button></p>
+              <p>Email: user.email </p>
             </div>
             <div className="detail">
-              <p>Password: user.password <button>edit</button></p>
+              <p>Password: user.password </p>
             </div>
           </div>
         </div>
