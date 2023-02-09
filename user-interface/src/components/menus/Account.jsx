@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 
 export const Account = () => {
   const navigate = useNavigate()

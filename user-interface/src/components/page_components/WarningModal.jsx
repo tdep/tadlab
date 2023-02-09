@@ -28,13 +28,15 @@ function WarningModal() {
     <div id="warning-modal" className="modal">
       <div className="modal-content">
         <span className="close" onClick={handleModalClose}>&times;</span>
-        <h3>WARNING!</h3>
-        <p>You are about to leave the page without saving your project!</p>
-        <div>
+        <div id="text">
+          <h3>WARNING!</h3>
+          <p>You are about to leave the page without saving your project!</p>
           <p>Do you want to continue?</p>
-          <button onClick={handleLeaveAndSave}>Leave & Save</button>
-          <button onClick={handleLeave}>Leave without saving</button>
-          <button onClick={handleModalClose}>Cancel</button>
+        </div>
+        <div>
+          <button id="save" onClick={handleLeaveAndSave}>Leave & Save</button>
+          <button id="nosave" onClick={handleLeave}>Leave without saving</button>
+          <button id="cancel" onClick={handleModalClose}>Cancel</button>
         </div>
       </div>
     </div>
