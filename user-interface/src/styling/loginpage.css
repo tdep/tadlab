@@ -1,5 +1,40 @@
-/* The Card (background) */
+/* Title behind card */
 
+#background {
+  display: flex;
+
+}
+
+#left {
+  padding: 0;
+  margin: 0;
+  margin-left: 2%;
+  margin-right: 30%;
+  overflow: none;
+}
+#right {
+  margin-left: 2%;
+  overflow: none;
+}
+
+#background h1 {
+  display: inline-block;
+  font-size: 12.5vw;
+
+  padding: 0;
+  margin: 0;
+}
+
+.l {
+  text-align: left;
+}
+
+.r {
+  text-align: right;
+}
+
+
+/* The Card (background) */
 #login-card{
   display: flex;
   position: fixed;
@@ -11,7 +46,7 @@
   /* overflow: auto; */
   align-items: center;
   background-color: rgb(0, 0, 0);
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(135, 135, 135, 0.4);
 }
 
 /* Card Content/Box */

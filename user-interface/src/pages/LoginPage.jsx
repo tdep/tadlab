@@ -23,8 +23,21 @@ const LoginPage = () => {
       navigate("/home")
     }
   }
+
   return (
     <div>
+      <div id="background">
+        <div id="left">
+          <h1 id="l1" className="l" style={{ color: "#8c1212" }}>TAD</h1>
+          <h1 id="l2" className="l" style={{ color: "#fa7a35" }}>TAD</h1>
+          <h1 id="l3" className="l" style={{ color: "#fac935" }}>TAD</h1>
+        </div>
+        <div id="right">
+          <h1 id="r1" className="r" style={{ color: "#8c1212" }}>LAB</h1>
+          <h1 id="r2" className="r" style={{ color: "#fa7a35" }}>LAB</h1>
+          <h1 id="r3" className="r" style={{ color: "#fac935" }}>LAB</h1>
+        </div>
+      </div>
       <div id="login-card">
         <div id="login-container" className="container">
           <div id="imgcontainer">

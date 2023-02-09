@@ -1,0 +1,195 @@
+.home {
+  /* display: flex; */
+  flex-direction: row;
+}
+
+.userpage {
+  display: flex;
+  flex-direction: row;
+}
+
+.navbtns {
+  display: flex;
+  float: left;
+}
+
+.navbtns span {
+  margin: 8px 8px 0 8px;
+}
+
+#userpageTitle {
+  height: 100%;
+  width: 250px;
+  position: fixed;
+  background-color: antiquewhite;
+  top: 0;
+  left: 0;
+  text-align: left;
+  padding-left: 8px;
+  padding-top: 8px;
+}
+
+#userpageTitle h1 {
+  color: #a5a5a5;
+  font-size: 70px;
+  margin: 0;
+}
+
+.tadlab {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  margin: 0;
+  padding: 0;
+}
+
+#quickAccessContainer {
+  display: grid;
+  grid-template-columns: repeat(2, 400px);
+  padding: 10px
+}
+
+/* The side navigation menu */
+.sideNav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #fac935;
+  overflow-x: hidden;
+  padding-top: 60px;
+  transition: 0.5s;
+}
+
+/* The navigation menu links */
+.sideNav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  text-align: right;
+  font-size: 25px;
+  color: black;
+  display: block;
+  transition: 0.3s;
+}
+
+/* Change color on mouse-over */
+.sideNav a:hover {
+  color: #f1f1f1;
+}
+
+/*  Position and style the close button */
+.sideNav .closeBtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+#titleCard {
+  display: block;
+  padding: 8px
+}
+
+/* The Account menu */
+.menu-card {
+  display: flex;
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 250px;
+  /* text-align: right; */
+  background-color: antiquewhite;
+  overflow-x: hidden;
+  padding-top: 60px;
+  transition: 0.5s;
+}
+
+#account-container {
+  display: flex;
+  flex-direction: column;
+  width: 75%;
+}
+
+.menu-card button {
+  transition: 0.2s
+}
+
+.menu-card button:hover {
+  opacity: 0.7;
+}
+
+.menu-card h1 {
+  display: flex;
+  color: #a5a5a5;
+  font-size: 70px;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  margin-left: 0;
+  padding: 0;
+}
+
+#details-container {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid #a5a5a5;
+}
+
+#avatar {
+  width: 50%;
+  height: 100%;
+  border: 1px solid black;
+  background-color: #e4dfdf;
+  margin-right: 8px;
+}
+
+#details {
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  text-align: right;
+}
+
+#details button {
+  width: 70px;
+  background-color: #fac935;
+}
+
+#detail {
+  display: flex;
+  flex-direction: row;
+}
+
+#manage-btn {
+  background-color: #fac935;
+}
+
+#logout-btn {
+  background-color: #8c1212;
+  color: white;
+}
+
+/* About */
+
+#tad {
+  width: 100%;
+}
+
+#tad-img {
+  shape-outside: circle();
+  border-radius: 50%;
+  float: left;
+}
+
+#tad img {
+  width: 50%;
+  height: fit-content;
+
+}
+
+#tad p {
+  text-align: justify;
+}
