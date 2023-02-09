@@ -1,0 +1,30 @@
+#keyboardPanel {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  min-height: 300px;
+  min-width: 550px;
+  height: 40%;
+  width: 97%;
+  margin-bottom: 10px;
+  background-color: #6d6d6d;
+  border: 2px solid white;
+}
+
+#modPanel {
+  min-height: 300px;
+  min-width: 150px;
+  height: 90%;
+  width: 15%;
+  background-color: #a5a5a5;
+  border: 1px solid black
+}
+
+#keyboard {
+  min-height: 300px;
+  min-width: 550px;
+  height: 90%;
+  width: 80%;
+  background-color: #a5a5a5;
+  border: 1px solid black
+}

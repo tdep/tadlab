@@ -1,0 +1,9 @@
+#modulePanel {
+  min-height: 450px;
+  min-width: 850px;
+  height: 70%;
+  width: 97%;
+  margin-top: 10px;
+  background-color: #a5a5a5;
+  border: 2px solid white;
+}
