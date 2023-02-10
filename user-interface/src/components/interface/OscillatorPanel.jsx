@@ -1,10 +1,12 @@
+import { Oscillator } from '../tonejs/Oscillator'
+
 import '../../../src/styling/interface/modulepanel.css'
 
 const OscillatorPanel = () => {
   return (
     <div id="oscillatorPanel">
       <div id="oscillatorContainer">
-
+        <Oscillator />
       </div>
       <div id="lfoContainer">
 
