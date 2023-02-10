@@ -1,7 +1,9 @@
 import * as Tone from 'tone'
 import { PowerSwitch } from '../interface_components/PowerSwitch'
-
+import { VolumeKnob } from '../interface_components/VolumeKnob'
+import { PanKnob } from '../interface_components/PanKnob'
 import '../../../src/styling/interface/modulepanel.css'
+import { ChannelKnob } from '../interface_components/ChannelKnob'
 
 
 const OutputContainer = () => {
@@ -18,13 +20,13 @@ const OutputContainer = () => {
       <div id="controlContainer">
         <div id="outputControls">
           <div id="volume">
-
+            <VolumeKnob />
           </div>
           <div id="pan">
-
+            <PanKnob />
           </div>
           <div id="channelType">
-
+            <ChannelKnob />          
           </div>
         </div>
         <div id="indicatorsAndSwitch" >
