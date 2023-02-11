@@ -193,7 +193,7 @@
 #outputControls {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
   min-height: 50px;
   height: 60%;
