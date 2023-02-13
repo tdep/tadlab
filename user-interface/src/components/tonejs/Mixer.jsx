@@ -3,7 +3,7 @@ import '../../../src/styling/interface/mixerpanel.css'
 
 const main = new Tone.Gain().toDestination();
 
-export const channel1 = new Tone.Channel().connect(main).toDestination()
+// export const channel1 = new Tone.Channel().connect(main).toDestination()
 // export const channel2 = new Tone.Channel().connect(main).toDestination()
 // export const channel3 = new Tone.Channel().connect(main).toDestination()
 // export const channel4 = new Tone.Channel().connect(main).toDestination()
@@ -13,7 +13,6 @@ const Mixer = () => {
   const ch1Level = () => {
     let lvl = document.getElementById("channel-1-fader").value
     channel1.volume.value = lvl
-    console.log(lvl)
   }
 
   const ch1Pan = () => {

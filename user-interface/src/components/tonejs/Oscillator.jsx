@@ -1,20 +1,15 @@
 import { useState } from 'react'
 import { useSelector } from 'react-redux'
 import * as Tone from 'tone'
-import { channel1 } from './Mixer'
 import store from '../../../src/app/store'
 import '../../../src/styling/interface/oscillatorpanel.css'
 
-// const channels = {
-//   ch1: channel1
-// }
-
 const handleOn = (osc) => {
-  osc.start().connect(channel1)
+  osc.triggerAttack()
 
 }
 const handleOff = (osc) => {
-  osc.disconnect()
+  osc.triggerRelease()
 }
 
 const handleSlider = (osc) => {
@@ -25,7 +20,7 @@ const handleSlider = (osc) => {
 const handleWaveform = (osc) => {
   let e = document.getElementById("waveform-select")
   let v = e.options[e.selectedIndex].value
-  osc.type = v
+  osc.oscillator.type = v
 }
 
 // const handleInput = (osc) => {
@@ -38,13 +33,13 @@ const handleWaveform = (osc) => {
 //   osc.connect(channels[v])
 // }
 
-export const osc1 = new Tone.Oscillator()
+export const osc1 = new Tone.Synth()
 
 export const Oscillator1 = () => {
   const [freq, setFreq] = useState(0)
   const [waveform, setWaveform] = useState('sine')
   const power = useSelector(state => state.interface.value.power)
-  osc1.connect(channel1)
+  osc1.toDestination()
   osc1.volume.value = -10
   return (
     <>

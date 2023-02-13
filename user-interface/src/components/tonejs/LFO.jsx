@@ -1,17 +1,16 @@
 import * as Tone from 'tone'
 import '../../../src/styling/interface/oscillatorpanel.css'
-import { channel1 } from './Mixer'
 
 const LFO = () => {
   const lfo = new Tone.LFO()
-  lfo.connect(channel1)
+  lfo.toDestination()
 
   const handleOn = () => {
-    lfo.start().connect(channel1)
+
   }
 
   const handleOff = () => {
-    lfo.stop().disconnect()
+
   }
 
   const handleSlider = () => {
