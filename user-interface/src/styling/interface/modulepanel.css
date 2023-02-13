@@ -23,6 +23,10 @@
 }
 
 #oscillatorContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
   min-height: 225px;
   min-width: 200px;
   height: 50%;

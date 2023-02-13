@@ -1,0 +1,77 @@
+/* OSCILLATOR */
+
+#osc-inputs {
+  display: flex;
+  flex-direction: row;
+  margin: 8px;
+}
+
+#frequency-container {
+  display: flex;
+  flex-direction: row;
+}
+
+#oscOn {
+  display: flex;
+  height: 20px;
+  width: 20px; 
+  text-align: center; 
+  justify-content: center;
+  align-items: center;
+}
+
+#oscOff {
+  display: flex;
+  height: 20px;
+  width: 20px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+#osc1-freq {
+  appearance: slider-vertical;
+  margin: 0;
+  padding: 0;
+  height: 80px;
+  width: 20px;
+}
+
+/* LFO */
+
+#lfo-inputs {
+  display: flex;
+  flex-direction: row;
+  margin: 8px;
+}
+
+#lfo-frequency-container {
+  display: flex;
+  flex-direction: row;
+}
+
+#lfoOn {
+  display: flex;
+  height: 20px;
+  width: 20px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+#lfoOff {
+  display: flex;
+  height: 20px;
+  width: 20px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+#lfo1-freq {
+  appearance: slider-vertical;
+  margin: 0;
+  padding: 0;
+  height: 80px;
+  width: 20px;
+}
