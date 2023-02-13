@@ -16,21 +16,21 @@ export const Keys = () => {
     name: "",
     note: ""
   }
-  
+
   return (
     <>
       <div className="cToE">
         <div className="white">
           {cToEWhite.map((key) => {
             return (
-              <div className="cToEWhite">{key}</div>
+              <div className="cToEWhite"></div>
             )
           })}
         </div>
         <div className="black">
           {cToEBlack.map((key) => {
             return (
-              <div className="cToEBlack">{key}</div>
+              <div className="cToEBlack"></div>
             )
           })}
         </div>
@@ -40,14 +40,14 @@ export const Keys = () => {
         <div className="white">
           {fToBWhite.map((key) => {
             return (
-              <div className="fToBWhite">{key}</div>
+              <div className="fToBWhite"></div>
             )
           })}
         </div>
         <div className="black">
           {fToBBlack.map((key) => {
             return (
-              <div className="fToBBlack">{key}</div>
+              <div className="fToBBlack"></div>
             )
           })}
         </div>

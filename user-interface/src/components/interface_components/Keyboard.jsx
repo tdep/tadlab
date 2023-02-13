@@ -14,7 +14,7 @@ const Keyboard = () => {
       <Keys />
       <Keys />
       <Keys />
-      <div className="cToEWhite">8</div>
+      <div className="cToEWhite"></div>
     </div>
   )
 

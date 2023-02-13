@@ -109,6 +109,7 @@
 }
 #interfaceWindow {
   border: 5px solid black;
+  border-radius: 12px;
   margin-top: 50px;
   margin-left: 320px;
   min-height: 800px;
@@ -119,6 +120,7 @@
 
 #projectContainer {
   background-color: #aaa;
+  border-radius: 20px;
   min-height: 800px;
   min-width: 800px;
   height: 100%;
