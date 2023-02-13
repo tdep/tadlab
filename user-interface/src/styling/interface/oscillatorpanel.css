@@ -30,7 +30,7 @@
   align-items: center;
 }
 
-#osc1-freq {
+#osc-freq {
   appearance: slider-vertical;
   margin: 0;
   padding: 0;

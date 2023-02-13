@@ -1,3 +1,4 @@
+import Keyboard from '../interface_components/Keyboard'
 import '../../../src/styling/interface/keyboardpanel.css'
 
 const KeyBoardPanel = () => {
@@ -17,7 +18,7 @@ const KeyBoardPanel = () => {
         </div>
       </div>
       <div id="keyboard">
-
+        <Keyboard />
       </div>
     </div>
   )

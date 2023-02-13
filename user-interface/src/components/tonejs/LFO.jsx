@@ -1,16 +1,17 @@
 import * as Tone from 'tone'
 import '../../../src/styling/interface/oscillatorpanel.css'
+import { channel1 } from './Mixer'
 
 const LFO = () => {
   const lfo = new Tone.LFO()
-  lfo.toDestination()
+  lfo.connect(channel1)
 
   const handleOn = () => {
-    lfo.start()
+    lfo.start().connect(channel1)
   }
 
   const handleOff = () => {
-    lfo.stop()
+    lfo.stop().disconnect()
   }
 
   const handleSlider = () => {
@@ -24,9 +25,12 @@ const LFO = () => {
     lfo.type = v
   }
 
-  const handleOutput = () => {
-
-  }
+  // const handleOutput = () => {
+  //   let e = document.getElementById("output")
+  //   let v = e.options[e.selectedIndex].value
+  //   lfo.connect(channels[v])
+  //   console.log(v)
+  // }
 
   return (
     <>
@@ -47,11 +51,11 @@ const LFO = () => {
             <option name="triangle" value="triangle" className="lfo-waveform-option">Triangle</option>
             <option name="square" value="square" className="lfo-waveform-option">Square</option>
           </select>
-          <select id="output" onClick={handleOutput}>
+          {/* <select id="output" onClick={handleOutput}>
             <option name="osc1" value="osc1" className="osc-input" >Osc 1</option>
-            <option name="osc2" value="osc2" className="osc-input" >Osc 2</option>
+            <option name="ch1" value="ch12" className="osc-input" >Channel 1</option>
           </select>
-          <label htmlFor="output">Out</label>
+          <label htmlFor="output">Out</label> */}
         </div>
       </div>
     </>
