@@ -1,4 +1,5 @@
 import '../../../src/styling/interface/modulepanel.css'
+import Mixer from '../tonejs/Mixer'
 
 
 const KludgeContainer = () => {
@@ -7,8 +8,8 @@ const KludgeContainer = () => {
       <div id="stepSequencerContainer">
 
       </div>
-      <div id="harmonicSequencerContainer">
-
+      <div id="mixerPanel">
+        <Mixer />
       </div>
     </div>
   )

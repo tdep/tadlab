@@ -3,6 +3,7 @@
 #osc-inputs {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   margin: 8px;
 }
 
@@ -37,11 +38,17 @@
   width: 20px;
 }
 
+#waveform-container {
+  display: flex;
+  flex-direction: column;
+}
+
 /* LFO */
 
 #lfo-inputs {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   margin: 8px;
 }
 
@@ -74,4 +81,9 @@
   padding: 0;
   height: 80px;
   width: 20px;
+}
+
+#lfo-waveform-container {
+  display: flex;
+  flex-direction: column;
 }

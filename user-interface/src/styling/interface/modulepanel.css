@@ -23,10 +23,10 @@
 }
 
 #oscillatorContainer {
-  display: flex;
+  /* display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-between; */
   min-height: 225px;
   min-width: 200px;
   height: 50%;
@@ -132,7 +132,7 @@
   border: 2px dashed darkolivegreen;
 }
 
-#harmonicSequencerContainer {
+#mixerPanel {
   min-height: 230px;
   min-width: 400px;
   height: 100%;

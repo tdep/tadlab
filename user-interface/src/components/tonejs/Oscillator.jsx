@@ -48,7 +48,7 @@ export const Oscillator = () => {
           <button id="oscOff" onClick={handleOff}>OFF</button>
         </div>
         <label htmlFor="osc1-freq">Hz</label>
-        <input id="osc1-freq" type="range" min="20" max="20000"onChange={handleSlider}/>
+        <input id="osc1-freq" type="range" min="20" max="2000"onChange={handleSlider}/>
       </div>
 
       <div id="waveform-container">
