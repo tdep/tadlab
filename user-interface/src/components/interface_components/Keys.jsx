@@ -17,71 +17,6 @@ export const Keys = ({k, handleTrigger, handleRelease}) => {
     naturals: {1: 'C', 2: 'D', 3: 'E', 4: 'F', 5: 'G', 6: 'A', 7:'B'},
     sharps: {1:'C#', 2:'D#', 4:'F#', 5:'G#', 6:'A#'}
   }
-
-  const keyTrigger = document.addEventListener("keydown", e => {
-  //   switch (e.key) {
-  //     case "a":
-  //       return osc1.triggerAttack("C3", now);
-  //     case "w":
-  //       return osc1.triggerAttack("C#3", now);
-  //     case "s":
-  //       return osc1.triggerAttack("D3", now);
-  //     case "e":
-  //       return osc1.triggerAttack("D#3", now);
-  //     case "d":
-  //       return osc1.triggerAttack("E3", now);
-  //     case "f":
-  //       return osc1.triggerAttack("F3", now);
-  //     case "t":
-  //       return osc1.triggerAttack("F#3", now);
-  //     case "g":
-  //       return osc1.triggerAttack("G3", now);
-  //     case "y":
-  //       return osc1.triggerAttack("G#3", now);
-  //     case "h":
-  //       return osc1.triggerAttack("A3", now);
-  //     case "u":
-  //       return osc1.triggerAttack("A#3", now);
-  //     case "j":
-  //       return osc1.triggerAttack("B3", now);
-  //     case "k":
-  //       return osc1.triggerAttack("C4", now);
-  //     case "o":
-  //       return osc1.triggerAttack("C#4", now);
-  //     case "l":
-  //       return osc1.triggerAttack("D4", now);
-  //     case "p":
-  //       return osc1.triggerAttack("D#4", now);
-  //     case ";":
-  //       return osc1.triggerAttack("E4", now);
-  //     default:
-  //       return;
-  //   }
-  })
-
-  const keyRelease = document.addEventListener("keyup", e => {
-    switch (e.key) {
-      case "a":
-      case "w":
-      case "s":
-      case "e":
-      case "d":
-      case "f":
-      case "t":
-      case "g":
-      case "y":
-      case "h":
-      case "u":
-      case "j":
-      case "k":
-      case "o":
-      case "l":
-      case "p":
-      case ";":
-      
-        osc1.triggerRelease();
-    }
-  })
   
 
   return (
@@ -99,8 +34,6 @@ export const Keys = ({k, handleTrigger, handleRelease}) => {
               onMouseUp={handleRelease}
               onDragEnter={handleTrigger}
               onDragLeave={handleRelease}
-              onKeyDown={keyTrigger}
-              onKeyUp={keyRelease}
               ></div>
             )
           })}

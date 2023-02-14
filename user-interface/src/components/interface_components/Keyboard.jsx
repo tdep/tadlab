@@ -21,7 +21,20 @@ const Keyboard = () => {
     let keyTrigger = document.addEventListener("keydown", e => { 
       let key = e.key
       let note = keyKey[key]
+      let domKey = document.getElementById(note)
       osc1.triggerAttack(note, now)
+      domKey.style.backgroundColor = "#8c1212"
+    })
+    let keyRelease = document.addEventListener("keyup", e => {
+      let key = e.key
+      let note = keyKey[key]
+      let domKey = document.getElementById(note)
+      osc1.triggerRelease()
+      if((domKey.className[4]) == "W") {
+        domKey.style.backgroundColor = "ivory"
+      } else {
+        domKey.style.backgroundColor = "black"
+      }
     })
     
   }
