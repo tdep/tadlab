@@ -120,3 +120,18 @@
   font-size: 30px;
   border-radius: 10px;
 }
+
+.show-notenames {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    width: 30px;
+    font-size: 12px;
+    border-radius: 10px;
+}
+
+.keyLabel {
+  display: show
+}

@@ -1,4 +1,4 @@
-import { Oscillator1, Oscillator2 } from '../tonejs/Oscillator'
+import { Oscillator1 } from '../tonejs/Oscillator'
 
 import '../../../src/styling/interface/modulepanel.css'
 import LFO from '../tonejs/LFO'
@@ -8,7 +8,6 @@ const OscillatorPanel = () => {
     <div id="oscillatorPanel">
       <div id="oscillatorContainer">
         <Oscillator1 />
-        {/* <Oscillator2 /> */}
       </div>
       <div id="lfoContainer">
         <LFO />
