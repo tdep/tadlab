@@ -5,10 +5,10 @@ import { keyBoardTrigger } from "../tonejs/NoteTrigger"
 export const Keys = ({k, handleTrigger, handleRelease}) => {
   const now = Tone.now()
 
-  const cToEWhite = [1, 2, 3]
-  const cToEBlack = [1, 2]
-  const fToBWhite = [4, 5, 6, 7]
-  const fToBBlack = [1, 2, 3]
+  const cToEWhite = ["C", "D", "E"]
+  const cToEBlack = ["C#", "D#"]
+  const fToBWhite = ["F", "G", "A", "B"]
+  const fToBBlack = ["F#", "G#", "A#"]
 
 
   let i = 1
@@ -57,7 +57,7 @@ export const Keys = ({k, handleTrigger, handleRelease}) => {
               onMouseUp={handleRelease}
               onDragEnter={handleTrigger}
               onDragLeave={handleRelease}
-              ></div>
+              >{key}</div>
             )
           })}
         </div>
@@ -76,7 +76,7 @@ export const Keys = ({k, handleTrigger, handleRelease}) => {
               onMouseUp={handleRelease}
               onDragEnter={handleTrigger}
               onDragLeave={handleRelease}
-              ></div>
+              >{key}</div>
             )
           })}
         </div>
@@ -99,7 +99,7 @@ export const Keys = ({k, handleTrigger, handleRelease}) => {
               onMouseUp={handleRelease}
               onDragEnter={handleTrigger}
               onDragLeave={handleRelease}
-              ></div>
+              >{key}</div>
             )
           })}
         </div>

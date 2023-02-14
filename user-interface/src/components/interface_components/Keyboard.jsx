@@ -71,10 +71,9 @@ const Keyboard = () => {
         className="cToEWhite" 
         onMouseDown={handleTrigger}
         onMouseUp={handleRelease}
-        onKeyDown={handleTrigger}
         onDragEnter={handleTrigger}
         onDragLeave={handleRelease}
-      ></div>
+      >C</div>
     </div>
   )
 
