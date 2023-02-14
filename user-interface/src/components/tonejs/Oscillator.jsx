@@ -1,6 +1,7 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useSelector } from 'react-redux'
 import * as Tone from 'tone'
+import { Reverb } from './Reverb'
 import store from '../../../src/app/store'
 import '../../../src/styling/interface/oscillatorpanel.css'
 
@@ -23,6 +24,74 @@ const handleWaveform = (osc) => {
   osc.oscillator.type = v
 }
 
+export const handleDecay = (e) => {
+  e.preventDefault
+  let decay = document.getElementById("decay").value
+  // reverb.decay = decay
+}
+
+export const handlePreDelay = (e) => {
+  e.preventDefault
+  let preDelay = document.getElementById("pre-delay").value
+  // reverb._preDelay = preDelay
+}
+
+export const handleWet = () => {
+  let wet = document.getElementById("wet").value
+  // reverb.wet = wet
+}
+
+export const reverbBypass = () => {
+  let bypass = document.getElementById("reverbBypass")
+  let classes = bypass.classList
+  if (classes.contains("false")) {
+    classes.remove("false")
+    classes.add("true")
+    osc1.disconnect(reverb)
+    osc1.toDestination()
+  } else {
+    classes.remove("true")
+    classes.add("false")
+    osc1.connect(reverb)
+    reverb.toDestination()
+  }
+  console.log(classes)
+}
+
+export const tremeloBypass = () => {
+  let bypass = document.getElementById("tremeloBypass")
+  let classes = bypass.classList
+  if (classes.contains("false")) {
+    classes.remove("false")
+    classes.add("true")
+    osc1.disconnect(tremelo)
+    osc1.toDestination()
+  } else {
+    classes.remove("true")
+    classes.add("false")
+    osc1.connect(tremelo)
+    tremelo.toDestination()
+  }
+  console.log(classes)
+}
+
+export const bitCrusherBypass = () => {
+  let bypass = document.getElementById("bitCrusherBypass")
+  let classes = bypass.classList
+  if (classes.contains("false")) {
+    classes.remove("false")
+    classes.add("true")
+    osc1.disconnect(crusher)
+    osc1.toDestination()
+  } else {
+    classes.remove("true")
+    classes.add("false")
+    osc1.connect(crusher)
+    crusher.toDestination()
+  }
+  console.log(classes)
+}
+
 // const handleInput = (osc) => {
 
 // }
@@ -34,12 +103,23 @@ const handleWaveform = (osc) => {
 // }
 export const osc1 = new Tone.PolySynth(Tone.Synth).toDestination();
 // export const osc1 = new Tone.Synth()
+export const reverb = new Tone.Reverb({
+  decay: 2,
+  preDelay: 1,
+  wet: 1
+})
+
+export const tremelo = new Tone.Tremolo(9, 0.75).start()
+
+export const crusher = new Tone.BitCrusher(4)
 
 export const Oscillator1 = () => {
   const [freq, setFreq] = useState(0)
   const [waveform, setWaveform] = useState('sine')
+  const instRef = useRef(null) //use with useEffect to handle pops
   const power = useSelector(state => state.interface.value.power)
-  osc1.toDestination()
+  // osc1.connect(reverb)
+  // reverb.toDestination()
   osc1.volume.value = -10
   return (
     <>

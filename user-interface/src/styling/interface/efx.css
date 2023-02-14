@@ -1,0 +1,38 @@
+#reverb-sliders {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 8px
+}
+
+#reverb-sliders input {
+  width: 90px;
+}
+
+.bypass {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 20px;
+  width: 50px;
+  font-size: 12px;
+  border-radius: 4px;
+  box-shadow: 0px 2px 3px black;
+}
+
+.bypass.true#reverbBypass {
+  opacity: 0.7;
+  box-shadow: inset 0px 2px 3px black;
+}
+
+.bypass.true#tremeloBypass {
+  opacity: 0.7;
+  box-shadow: inset 0px 2px 3px black;
+}
+
+.bypass.true#bitCrusherBypass {
+  opacity: 0.7;
+  box-shadow: inset 0px 2px 3px black;
+}
