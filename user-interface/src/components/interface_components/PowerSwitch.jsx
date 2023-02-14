@@ -8,7 +8,6 @@ export const PowerSwitch = () => {
 
   const power = useSelector(state => state.interface.value.power)
 
-
   const handleToggle = async () => {
     let checkBox = document.getElementById('toggle')
     let pwrLED = document.getElementById('pwrLED')

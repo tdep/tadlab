@@ -6,16 +6,37 @@ import '../../../src/styling/interface/keyboard.css'
 const Keyboard = () => {
   const now = Tone.now()
   const octave = 3
-
-  const changeOctave = () => {
-
+  const keyKey = {
+    "a": `C${octave}`, "w": `C#${octave}`, "s": `D${octave}`, "e": `D#${octave}`, "d": `E${octave}`,
+    "f": `F${octave}`, "t": `F#${octave}`, "g": `G${octave}`, "y": `G#${octave}`, "h": `A${octave}`, 
+    "u": `A#${octave}`, "j": `B${octave}`, "k": `C${octave + 1}`, "o": `C#${octave + 1}`, "l": `D${octave + 1}`,
+    "p": `D#${octave + 1}`, ";": `E${octave + 1}`
   }
+  
+  const changeOctave = () => {
+    
+  }
+  
+  const keyGrabber = () => {
+    let keyTrigger = document.addEventListener("keydown", e => { 
+      let key = e.key
+      let note = keyKey[key]
+      osc1.triggerAttack(note, now)
+    })
+    
+  }
+  keyGrabber()
 
   const handleTrigger = (e) => {
     let key = e.target
     let note = key.id
-    osc1.triggerAttack(note, now)
-    key.style.backgroundColor =  "#8c1212"
+    switch (e.type) {
+      case "mousedown":
+        osc1.triggerAttack(note, now)
+        key.style.backgroundColor =  "#8c1212"
+      default:
+        return
+    }
   }
 
   const handleRelease = (e) => {
@@ -26,7 +47,6 @@ const Keyboard = () => {
     } else {
       key.style.backgroundColor = "black"
     }
-    
   }
 
   return (
