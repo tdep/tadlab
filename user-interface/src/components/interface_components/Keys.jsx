@@ -34,7 +34,7 @@ export const Keys = ({k, handleTrigger, handleRelease}) => {
               onMouseUp={handleRelease}
               onDragEnter={handleTrigger}
               onDragLeave={handleRelease}
-              ></div>
+              ><p id="keyLabel">{key}</p></div>
             )
           })}
         </div>
@@ -57,7 +57,7 @@ export const Keys = ({k, handleTrigger, handleRelease}) => {
               onMouseUp={handleRelease}
               onDragEnter={handleTrigger}
               onDragLeave={handleRelease}
-              >{key}</div>
+              ><p id="keyLabel">{key}</p></div>
             )
           })}
         </div>
@@ -76,7 +76,7 @@ export const Keys = ({k, handleTrigger, handleRelease}) => {
               onMouseUp={handleRelease}
               onDragEnter={handleTrigger}
               onDragLeave={handleRelease}
-              >{key}</div>
+              ><p id="keyLabel">{key}</p></div>
             )
           })}
         </div>
@@ -99,7 +99,7 @@ export const Keys = ({k, handleTrigger, handleRelease}) => {
               onMouseUp={handleRelease}
               onDragEnter={handleTrigger}
               onDragLeave={handleRelease}
-              >{key}</div>
+              ><p id="keyLabel">{key}</p></div>
             )
           })}
         </div>

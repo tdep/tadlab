@@ -17,6 +17,10 @@
 }
 
 .cToEWhite {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: center;
   min-height: 300px;
   min-width: 50px;
   border: 2px solid black;
@@ -38,6 +42,10 @@
 }
 
 .cToEBlack {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: center;
   min-height: 185px;
   min-width: 35px;
   border: 2px solid black;
@@ -56,6 +64,10 @@
 }
 
 .fToBWhite {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: center;
   min-height: 300px;
   min-width: 50px;
   border: 2px solid black;
@@ -68,6 +80,10 @@
 }
 
 .fToBBlack {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: center;
   min-height: 185px;
   min-width: 35px;
   border: 2px solid black;
@@ -79,4 +95,28 @@
 
 .fToBBlack:hover {
   background-color: rgb(81, 80, 80);
+}
+
+#octave-buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 12px;
+}
+
+#octave-buttons label {
+  color: ivory;
+  font-weight: bold;
+}
+
+.octave-btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  width: 50px;
+  font-size: 30px;
+  border-radius: 10px;
 }

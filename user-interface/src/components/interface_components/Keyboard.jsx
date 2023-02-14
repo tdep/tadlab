@@ -1,11 +1,13 @@
 import { Keys } from './Keys'
 import { osc1 } from '../tonejs/Oscillator'
+import { useState, useEffect } from 'react'
 import * as Tone from 'tone'
 import '../../../src/styling/interface/keyboard.css'
 
 const Keyboard = () => {
+  const [octave, setOctave] = useState(3);
+  // let octave = 3
   const now = Tone.now()
-  const octave = 3
   const keyKey = {
     "a": `C${octave}`, "w": `C#${octave}`, "s": `D${octave}`, "e": `D#${octave}`, "d": `E${octave}`,
     "f": `F${octave}`, "t": `F#${octave}`, "g": `G${octave}`, "y": `G#${octave}`, "h": `A${octave}`, 
@@ -13,10 +15,7 @@ const Keyboard = () => {
     "p": `D#${octave + 1}`, ";": `E${octave + 1}`
   }
   
-  const changeOctave = () => {
-    
-  }
-  
+  // Handle using the comupter keyboard as an input
   const keyGrabber = () => {
     let keyTrigger = document.addEventListener("keydown", e => { 
       let key = e.key
@@ -24,6 +23,27 @@ const Keyboard = () => {
       let domKey = document.getElementById(note)
       osc1.triggerAttack(note, now)
       domKey.style.backgroundColor = "#8c1212"
+      domKey.style.color = "ivory"
+      let hover = document.addEventListener("mouseover", e => { //to re-establish the hover effect after a keypress
+        let key = e.target
+        if (key.id == note) {
+          if (key.className[4] == "W") {
+            key.style.backgroundColor = "rgb(222, 217, 201)"
+          } else {
+            key.style.backgroundColor = "rgb(81, 80, 80)"
+          }
+        }
+      })
+      let exit = document.addEventListener("mouseout", e => {
+        let key = e.target
+        if (key.id == note) {
+          if (key.className[4] == "W") {
+            key.style.backgroundColor = "ivory"
+          } else {
+            key.style.backgroundColor = "black"
+          }
+        } 
+      })
     })
     let keyRelease = document.addEventListener("keyup", e => {
       let key = e.key
@@ -32,6 +52,7 @@ const Keyboard = () => {
       osc1.triggerRelease()
       if((domKey.className[4]) == "W") {
         domKey.style.backgroundColor = "ivory"
+        domKey.style.color = "black"
       } else {
         domKey.style.backgroundColor = "black"
       }
@@ -40,6 +61,7 @@ const Keyboard = () => {
   }
   keyGrabber()
 
+  // handle the mouse as an input
   const handleTrigger = (e) => {
     let key = e.target
     let note = key.id
@@ -47,16 +69,19 @@ const Keyboard = () => {
       case "mousedown":
         osc1.triggerAttack(note, now)
         key.style.backgroundColor =  "#8c1212"
+        key.style.color = "ivory"
       default:
         return
     }
   }
 
+  //handle the mouse as an input
   const handleRelease = (e) => {
     let key = e.target
     osc1.triggerRelease(now)
     if((key.className[4]) == "W"){
       key.style.backgroundColor = "ivory"
+      key.style.color = "black"
     } else {
       key.style.backgroundColor = "black"
     }
@@ -73,7 +98,14 @@ const Keyboard = () => {
         onMouseUp={handleRelease}
         onDragEnter={handleTrigger}
         onDragLeave={handleRelease}
-      >C</div>
+      ><p id="keyLabel">C</p>
+      </div>
+      <div id="octave-buttons">
+        <label htmlFor="octave-btn-container">Octave</label>
+        <div id="octave-btn-container"></div>
+          <button id="octave-up" className="octave-btn" onClick={() => setOctave(octave + 1)}><b>+</b></button>
+          <button id="octave-down" className="octave-btn" onClick={() => setOctave(octave - 1)}><b>-</b></button>
+      </div>
     </div>
   )
 
