@@ -12,12 +12,21 @@ const Keyboard = () => {
   }
 
   const handleTrigger = (e) => {
-    let note = e.target.id
+    let key = e.target
+    let note = key.id
     osc1.triggerAttack(note, now)
+    key.style.backgroundColor =  "#8c1212"
   }
 
   const handleRelease = (e) => {
+    let key = e.target
     osc1.triggerRelease(now)
+    if((key.className[4]) == "W"){
+      key.style.backgroundColor = "ivory"
+    } else {
+      key.style.backgroundColor = "black"
+    }
+    
   }
 
   return (
