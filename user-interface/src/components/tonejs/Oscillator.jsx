@@ -92,6 +92,19 @@ export const bitCrusherBypass = () => {
   console.log(classes)
 }
 
+export const ADSRFunction = () => {
+  return Tone.Offline(() => {
+    const ampEnv = new Tone.AmplitudeEnvelope({
+      attack: 0.1,
+      decay: 0.2,
+      sustain: 1.0,
+      release: 0.8
+    }).toDestination();
+    ampEnv.triggerAttackRelease("8t")
+
+  }, 1.5, 1)
+}
+
 // const handleInput = (osc) => {
 
 // }
@@ -101,7 +114,7 @@ export const bitCrusherBypass = () => {
 //   let v = e.options[e.selectedIndex].value
 //   osc.connect(channels[v])
 // }
-export const osc1 = new Tone.PolySynth(Tone.Synth).toDestination();
+export const osc1 = new Tone.PolySynth(Tone.Synth).toDestination()
 // export const osc1 = new Tone.Synth()
 export const reverb = new Tone.Reverb({
   decay: 2,

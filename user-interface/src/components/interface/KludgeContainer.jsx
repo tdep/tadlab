@@ -1,6 +1,6 @@
-import '../../../src/styling/interface/modulepanel.css'
+import { Sequencer } from '../tonejs/Sequencer'
 import Mixer from '../tonejs/Mixer'
-
+import '../../../src/styling/interface/modulepanel.css'
 
 const KludgeContainer = () => {
   return (

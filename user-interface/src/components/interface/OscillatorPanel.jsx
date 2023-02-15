@@ -8,10 +8,11 @@ const OscillatorPanel = () => {
     <div id="oscillatorPanel">
       <div id="oscillatorContainer">
         <Oscillator1 />
+        {/* <Oscillator1 /> */}
       </div>
       <div id="lfoContainer">
         <LFO />
-        {/* <LFO /> */}
+        {/* <LFO />f */}
       </div>
       <h1>Oscillator Bank</h1>
     </div>
