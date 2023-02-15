@@ -157,6 +157,9 @@ const TadlabMini = () => {
   }
 
   const efxBtnArray = [ 1, 2, 3, 4]
+  const sqPresetArray = [1, 2, 3, 4]
+  const sqXArray = [1, 2, 3, 4, 5, 6, 7, 8]
+  const sqYArray = [1, 2, 3, 4]
 
   let oscOn = {
     'osc1': false,
@@ -285,7 +288,36 @@ const TadlabMini = () => {
                 })}
               </div>
             </div>
+            <div id="tadlab-mini-sequencer">
+              <div id="sqc-container">
+                <div id="reverb" className="efx-btn-container">
+                  {sqPresetArray.map((button) => {
+                    return (
+                      <div id="sqc-btn-container" className="efx">
+                        <div className="efx-label">{button}</div>
+                        <button id={`rvb${button}`} className="rvb-toggle" onClick={toggleRvb}>|R|</button>
+                      </div>
+                    )
+                  })}
+                </div>
+                <div id="tremelo" className="efx-btn-container">
+                  {sqYArray.map((row) => {
+                    return (
+                      sqXArray.map((button) => {
+                        return (
+                          <div id="tremelo-btn-container" className="efx">
+                            <button id={`trem${button}`} className="rvb-toggle" onClick={toggleTrem}>|T|</button>
+                            <div className="efx-label">{button}</div>
+                          </div>
+                        )
+                      })
+                    )
+                  })}
+                </div>
+              </div>
+            </div>
           </div>
+
           <div id="tadlab-mini-keyboard">
             <div id="keys">
               <Keys k={octave} handleTrigger={handleTrigger} handleRelease={handleRelease} />

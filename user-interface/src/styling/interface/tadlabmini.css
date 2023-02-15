@@ -208,6 +208,26 @@
   transition: All 250ms ease;
 }
 
+#sqc-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: normal;
+  background-color: #a9afb5;
+  height: 93%;
+  margin: 8px;
+  border: 1px solid black;
+  border-radius: 5px;
+  border-radius: 5px;
+  box-shadow: inset 1px 5px 0px black, inset -1px -1px 2px black
+}
+
+#sqc-btn-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
 #power {
   display: flex;
   flex-direction: column;
