@@ -18,11 +18,13 @@ const TadlabMini = () => {
     let pwrLED = document.getElementById('pwrLED')
     if (checkBox.checked == true) {
       pwrLED.style.background = "#f20c13";
+      pwrLED.style.boxShadow = "inset 0px -3px 3px #580e0e, inset 0px 1px 3px #DEE2E6, 1px 4px 4px #760508, -1px -2px 4px #760508"
       dispatch(togglePwr({ power: true }))
       await Tone.start()
       console.log(!power, ': audio started') //!power because the original state prints instead of the current state
     } else {
       pwrLED.style.background = "#9B2226";
+      pwrLED.style.boxShadow = "inset 0px -3px 3px #580e0e, inset 0px 1px 3px #DEE2E6, 0px 0px 0px #760508, 0px 0px 0px #760508"
       dispatch(togglePwr({ power: false }))
     }
   }
@@ -153,34 +155,62 @@ const TadlabMini = () => {
       }
     })
   }
-  let osc1On = false
-  const toggleOsc1 = () => {
-    let toggle = document.getElementById("osc1Toggle")
-    if (osc1On) {
-      toggle.style.backgroundColor = "#a01b1b"
 
-      osc1On = !osc1On
+  const efxBtnArray = [ 1, 2, 3, 4]
+
+  let oscOn = {
+    'osc1': false,
+    'osc2': false
+  }
+  const toggleOsc = (e) => {
+    let id = e.target.id
+    let toggle = document.getElementById(id)
+    if (oscOn[id]) {
+      toggle.style.backgroundColor = "#a01b1b"
+      oscOn[id] = false
       console.log("off")
     } else {
       toggle.style.backgroundColor = "#ff4608"
-      
-      osc1On = !osc1On
+      oscOn[id] = true
       console.log("on")
     }
   }
 
-  let osc2On = false
-  const toggleOsc2 = () => {
-    let toggle = document.getElementById("osc2Toggle")
-    if (osc2On) {
-      toggle.style.backgroundColor = "#a01b1b"
-
-      osc2On = !osc2On
+  let rvbOn = {
+    'rvb1': false,
+    'rvb2': false,
+    'rvb3': false,
+    'rvb4': false
+  }
+  const toggleRvb = (e) => {
+    let id = e.target.id
+    let toggle = document.getElementById(id)
+    if (rvbOn[id]) {
+      toggle.style.backgroundColor = "#1b486d"
+      rvbOn[id] = false
       console.log("off")
     } else {
-      toggle.style.backgroundColor = "#ff4608"
-
-      osc2On = !osc2On
+      toggle.style.backgroundColor = "#008cff"
+      rvbOn[id] = true
+      console.log("on")
+    }
+  }
+  let tremOn = {
+    'trem1': false,
+    'trem2': false,
+    'trem3': false,
+    'trem4': false
+  }
+  const toggleTrem = (e) => {
+    let id = e.target.id
+    let toggle = document.getElementById(id)
+    if (tremOn[id]) {
+      toggle.style.backgroundColor = "#1b486d"
+      tremOn[id] = false
+      console.log("off")
+    } else {
+      toggle.style.backgroundColor = "#008cff"
+      tremOn[id] = true
       console.log("on")
     }
   }
@@ -192,98 +222,67 @@ const TadlabMini = () => {
         <div id="spacer-above"></div>
         <div id="tadlab-mini-case">
           <div id="tadlab-mini-controls">
+            <div id="power">
+              <div id="pwrSwitch">
+                <p id="pwrLabel">on / off</p>
+                <label className="switch" id="powerSwitch" onClick={handleToggle}>
+                  <input type="checkbox" id="toggle" />
+                  <span className="slider round" ></span>
+                </label>
+              </div>
+              <div id="pwrLED" ></div>
+            </div>
             <div id="oscillators" className="control-module">
               <div id="osc1" className="osc-container">
-                <select id="osc1Waveform" className="waveform-selectors">
-                  <option name="sine" value="sine" className="waveform-option" onClick={() => handleWaveform(osc1)}>Sine</option>
-                  <option name="triangle" value="triangle" className="waveform-option" >Triangle</option>
-                  <option name="sawtooth" value="sawtooth" className="waveform-option" >Sawtooth</option>
-                  <option name="square" value="square" className="waveform-option" >Square</option>
-                </select>
-                <p>
-                  <a id="osc1Toggle" className="control-toggle" onClick={toggleOsc1}>O|</a>
-                </p>
+                <p>Oscillator-1</p>
+                <div className="osc-inputs">
+                  <select id="osc1Waveform" className="waveform-selectors">
+                    <option name="sine" value="sine" className="waveform-option" onClick={() => handleWaveform(osc1)}>Sine</option>
+                    <option name="triangle" value="triangle" className="waveform-option" >Triangle</option>
+                    <option name="sawtooth" value="sawtooth" className="waveform-option" >Sawtooth</option>
+                    <option name="square" value="square" className="waveform-option" >Square</option>
+                  </select>
+                  <div id="osc-btn-container" className="efx">
+                    <button id="osc1Toggle" className="control-toggle" onClick={toggleOsc}>O|</button>
+                  </div>
+                </div>
               </div>
+              <hr id="oscDivider" />
               <div id="osc2" className="osc-container">
-                <select id="osc2Waveform" className="waveform-selectors">
-                  <option name="sine" value="sine" className="waveform-option" onClick={() => handleWaveform(osc2)}>Sine</option>
-                  <option name="triangle" value="triangle" className="waveform-option" >Triangle</option>
-                  <option name="sawtooth" value="sawtooth" className="waveform-option" >Sawtooth</option>
-                  <option name="square" value="square" className="waveform-option" >Square</option>
-                </select>
-                <p>
-                  <a id="osc2Toggle" className="control-toggle" onClick={toggleOsc2}>O|</a>
-                </p>
+                <p>Oscillator-2</p>
+                <div className="osc-inputs">
+                  <select id="osc2Waveform" className="waveform-selectors">
+                    <option name="sine" value="sine" className="waveform-option" onClick={() => handleWaveform(osc2)}>Sine</option>
+                    <option name="triangle" value="triangle" className="waveform-option" >Triangle</option>
+                    <option name="sawtooth" value="sawtooth" className="waveform-option" >Sawtooth</option>
+                    <option name="square" value="square" className="waveform-option" >Square</option>
+                  </select>
+                  <div id="osc-btn-container">
+                    <button id="osc2Toggle" className="control-toggle" onClick={toggleOsc}>O|</button>
+                  </div>
+                </div>
               </div>
             </div>
             <div id="efx-container">
               <div id="reverb" className="efx-btn-container">
-                <div id="rvbT-1" className="efx">
-                  <p>
-                    <label htmlFor="reverbToggle-1">
-                      Rvb-1
-                    </label>
-                    <a  id="reverbToggle-1" className="rvb-toggle">|R|</a>
-                  </p>
-                </div>
-                <div id="rvbT-2" className="efx">
-                  <p>
-                    <label htmlFor="reverbToggle-2">
-                      Rvb-2
-                    </label>
-                    <a id="reverbToggle-2" className="rvb-toggle">|R|</a>
-                  </p>
-                </div>
-                <div id="rvbT-3" className="efx">
-                  <p>
-                    <label htmlFor="reverbToggle-3">
-                      Rvb-3
-                    </label>
-                    <a id="reverbToggle-3" className="rvb-toggle">|R|</a>
-                  </p>
-                </div>
-                <div id="rvbT-4" className="efx">
-                  <p>
-                    <label htmlFor="reverbToggle-4">
-                      Rvb-4
-                    </label>
-                    <a id="reverbToggle-4" className="rvb-toggle">|R|</a>
-                  </p>
-                </div>
+                {efxBtnArray.map((button) => {
+                  return (
+                    <div id="reverb-btn-container" className="efx">
+                      <div className="efx-label">{button}</div>
+                      <button id={`rvb${button}`} className="rvb-toggle" onClick={toggleRvb}>|R|</button>
+                    </div>
+                  )
+                })}
               </div>
               <div id="tremelo" className="efx-btn-container">
-                <div id="tremT-1" className="efx">
-                  <p>
-                    <a id="tremToggle-1" className="trem-toggle">|T|</a>
-                    <label htmlFor="tremToggle-1">
-                      Trem-1
-                    </label>
-                  </p>
-                </div>
-                <div id="tremT-2" className="efx">
-                  <p>
-                    <a id="tremToggle-2" className="trem-toggle">|T|</a>
-                    <label htmlFor="tremToggle-2">
-                      Trem-2
-                    </label>
-                  </p>
-                </div>
-                <div id="tremT-3" className="efx">
-                  <p>
-                    <a id="tremToggle-3" className="trem-toggle">|T|</a>
-                    <label htmlFor="tremToggle-3">
-                      Trem-3
-                    </label>
-                  </p>
-                </div>
-                <div id="tremT-4" className="efx">
-                  <p>
-                    <a id="tremToggle-4" className="trem-toggle">|T|</a>
-                    <label htmlFor="tremToggle-4">
-                      Trem-4
-                    </label>
-                  </p>
-                </div>
+                {efxBtnArray.map((button) => {
+                  return (
+                    <div id="tremelo-btn-container" className="efx">
+                      <button id={`trem${button}`} className="rvb-toggle" onClick={toggleTrem}>|T|</button>
+                      <div className="efx-label">{button}</div>
+                    </div>
+                  )
+                })}
               </div>
             </div>
           </div>
@@ -305,17 +304,6 @@ const TadlabMini = () => {
                 <button id="octave-up" className="octave-btn" onClick={() => setOctave(octave + 1)}><b>+</b></button>
                 <button id="octave-down" className="octave-btn" onClick={() => setOctave(octave - 1)}><b>-</b></button>
                 <button id="note-names" className="show-notenames" onClick={showNoteNames}>C#</button>
-              </div>
-              <div id="power">
-                <label className="switch" id="powerSwitch" onClick={handleToggle}>
-
-                  <input type="checkbox" id="toggle" />
-                  <span className="slider round" ></span>
-                </label>
-                <div id="power">
-                  <p id="pwrLabel">off / on</p>
-                  <div id="pwrLED" ></div>
-                </div>
               </div>
             </div>
           </div>

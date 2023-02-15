@@ -1,7 +1,4 @@
-@font-face {
-  font-family: LCD;
-  src: '../../src/assets/fonts/LCD-N__.woff'
-}
+@import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
 
 #tadlab-mini-container {
   display: flex;
@@ -19,11 +16,9 @@
 #tadlab-mini-userinterface {
   display: flex;
   flex-direction: column;
-  /* justify-content: space-evenly; */
   align-items: center;
   min-height: 400px;
-  /* min-width: 400px; */
- 
+  
 }
 
 #tadlab-mini-case {
@@ -32,6 +27,7 @@
   border: 3px solid #552905;
   border-radius: 6px;
   background-color: #552905;
+  box-shadow: 5px 25px 20px black
 }
 
 #tadlab-mini-controls {
@@ -52,23 +48,44 @@
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  background-color: #a9afb5;
+  width: 200px;
   margin: 8px;
   border: 1px solid black;
   border-radius: 5px;
+  box-shadow: inset 1px 5px 0px black, inset -1px -1px 2px black
+}
 
+#oscillators p {
+  color: #fff;
+  font-family: 'Orbitron', sans-serif;
+  text-shadow: 1px 1px #07121b;
+  background-color: #51565b;
+  border: 1px solid #5e6368;
+  box-shadow: 1px 1px 1px #5e6368;
+  padding: 0 8px;
 }
 
 .osc-container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
+#oscillators hr {
+  height: 4px;
+  width: 90%;
+  border-width: 0;
+  background-color: black;
+  margin: 0 auto 0 8px;
+}
 
-.control-module {
-  width:150px;
-  height: 93%;
+.osc-inputs {
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+  align-items: center;
 }
 
 .waveform-selectors {
@@ -82,26 +99,59 @@
   flex-direction: row;
   justify-content: space-around;
   align-items: normal;
+  background-color: #a9afb5;
   height: 93%;
   margin: 8px;
   border: 1px solid black;
   border-radius: 5px;
+  border-radius: 5px;
+  box-shadow: inset 1px 5px 0px black, inset -1px -1px 2px black
+}
+
+.efx-label {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 20px;
+  color: #fff;
+  font-family: 'Orbitron', sans-serif;
+  text-shadow: 1px 1px #07121b;
+  background-color: #51565b;
+  border: 1px solid #5e6368;
+  box-shadow: 1px 1px 1px #5e6368;
+  margin: 8px;
 }
 
 .efx-btn-container {
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
+  color: #fff;
+}
+
+#reverb-btn-container{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#tremelo-btn-container{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .control-toggle {
   position: relative;
   top: 0px;
+  width: 45px;
   background: #a01b1b;
   padding: 10px 10px;
   margin: 0 10px;
   border: 1px solid #a01b1b;
   border-radius: 5px;
-  box-shadow: 0px 5px 0px #580e0e;
+  box-shadow: 0px 5px 0px #580e0e, 0px 7px 1px #5e6368;
+  font-family: 'Orbitron', sans-serif;
   color: #fff;
   text-shadow: 1px 1px #a01b1b;
   transition: All 250ms ease;
@@ -117,12 +167,14 @@
 .rvb-toggle {
   position: relative;
   top: 0px;
+  width: 45px;
   background: #1b486d;
   padding: 10px 10px;
   margin: 0 10px;
   border: 1px solid #07121b;
   border-radius: 5px;
-  box-shadow: 0px 5px 0px #07121b;
+  box-shadow: 0px 5px 0px #07121b, 0px 7px 1px #5e6368;
+  font-family: 'Orbitron', sans-serif;
   color: #fff;
   text-shadow: 1px 1px #07121b;
   transition: All 250ms ease;
@@ -156,31 +208,55 @@
   transition: All 250ms ease;
 }
 
-#powerSwitch {
-  display: flex;
-  flex-direction: row;
-  margin-left: 10px;
-}
-
 #power {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: space-evenly;
   align-items: center;
+  background-color: #a9afb5;
+  height: 93%;
+  width: fit-content;
+  margin: 8px;
+  border: 1px solid black;
+  border-radius: 5px;
+  border-radius: 5px;
+  box-shadow: inset 1px 5px 0px black, inset -1px -1px 2px black
 }
 
 #pwrLED {
-  height: 12px;
-  width: 12px;
-  background-color: #9B2226;
+  height: 18px;
+  width: 18px;
+  background-color: #760508;
   border: 1px solid black;
   border-radius: 50%;
-  margin-left: 5px;
-  ;
+  transition: 3.2s;
+  box-shadow: 
+    inset 0px -3px 3px #580e0e, 
+    inset 0px 1px 3px #DEE2E6,
+    2px 2px 3px #760508,
+    -2px -2px 3px #760508
+}
+
+#pwrSwitch {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
 }
 
 #pwrLabel {
-  font-size: 10px;
+  font-size: 15px;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  text-align: center;
+  background-color: #51565b;
+  font-family: 'Orbitron', sans-serif;
+  color: #fff;
+  text-shadow: 1px 1px #07121b;
+  margin: 0 0 0 16px;
+  border: 1px solid #5e6368;
+  box-shadow: 1px 1px 1px #5e6368;
 }
 
 /* Slider inputs */
@@ -193,9 +269,11 @@ input:focus+.slider {
 }
 
 input:checked+.slider:before {
-  -webkit-transform: translateX(16px);
-  -ms-transform: translateX(16px);
-  transform: translate(16px);
+  transform: translate(70px);
+  box-shadow: 
+    inset -3px 0px 3px #580e0e, 
+    -5px 0px 1px rgb(40, 35, 35), 
+    inset 0px 1px 3px #DEE2E6;
 }
 
 /* The slider */
@@ -210,20 +288,21 @@ input:checked+.slider:before {
   right: 0;
   bottom: 0;
   background-color: #343A40;
-  -webkit-transition: .4s;
   transition: .4s;
 }
 
 .slider:before {
   position: absolute;
   content: "";
-  height: 18px;
-  width: 18px;
-  left: 4px;
-  bottom: 4px;
-  background-color: #9B2226;
-  -webkit-transition: .4s;
+  height: 38px;
+  width: 38px;
+  left: -10px;
+  background-color: #a01b1b;
   transition: .4s;
+  box-shadow : 
+    inset 3px 0px 3px #580e0e, 
+    10px 0px 3px rgb(40, 35, 35), 
+    inset 0px 1px 3px #DEE2E6;
 }
 
 /* Rounded sliders */
@@ -234,15 +313,18 @@ input:checked+.slider:before {
 
 .slider.round:before {
   border-radius: 50%;
-  border: 1px solid #ADB5BD;
+  border: 1px solid #580e0e;
 }
 
 /* The switch - the box around the slider */
 .switch {
   position: relative;
-  display: inline-block;
-  width: 44px;
-  height: 28px;
+  left: -18px;
+  width: 80px;
+  height: 15px;
+  margin: 0px;
+  padding: 0px;
+  transform: rotate(-90deg)
 }
 
 /* Hide default HTML checkbox */
