@@ -1,24 +1,24 @@
 import { Keys } from './Keys'
-// import { osc1 } from '../tonejs/Oscillator'
+import { osc1 } from '../tonejs/Oscillator'
 import { useState, useEffect } from 'react'
 import * as Tone from 'tone'
 import '../../../src/styling/interface/keyboard.css'
 
-const Keyboard = () => {
+const TadlabMiniKeyboard = () => {
   const [octave, setOctave] = useState(3);
   // let octave = 3
   const now = Tone.now()
-  
+
   const keyKey = {
     "a": `C${octave}`, "w": `C#${octave}`, "s": `D${octave}`, "e": `D#${octave}`, "d": `E${octave}`,
-    "f": `F${octave}`, "t": `F#${octave}`, "g": `G${octave}`, "y": `G#${octave}`, "h": `A${octave}`, 
+    "f": `F${octave}`, "t": `F#${octave}`, "g": `G${octave}`, "y": `G#${octave}`, "h": `A${octave}`,
     "u": `A#${octave}`, "j": `B${octave}`, "k": `C${octave + 1}`, "o": `C#${octave + 1}`, "l": `D${octave + 1}`,
     "p": `D#${octave + 1}`, ";": `E${octave + 1}`
   }
-  
+
   // Handle using the computer keyboard as an input
   const keyGrabber = () => {
-    let keyTrigger = document.addEventListener("keydown", e => { 
+    let keyTrigger = document.addEventListener("keydown", e => {
       if (e.repeat) {
         return;
       }
@@ -50,10 +50,10 @@ const Keyboard = () => {
           } else {
             key.style.backgroundColor = "black"
           }
-        } 
+        }
       })
     })
-    
+
     let keyRelease = document.addEventListener("keyup", e => {
       if (e.repeat) {
         return;
@@ -62,14 +62,14 @@ const Keyboard = () => {
       let note = keyKey[key]
       let domKey = document.getElementById(note)
       osc1.triggerRelease(note)
-      if((domKey.className[4]) == "W") {
+      if ((domKey.className[4]) == "W") {
         domKey.style.backgroundColor = "ivory"
         domKey.style.color = "black"
       } else {
         domKey.style.backgroundColor = "black"
       }
     })
-    
+
   }
   keyGrabber()
 
@@ -96,7 +96,7 @@ const Keyboard = () => {
     let key = e.target
     let note = key.id
     osc1.triggerRelease(note, now)
-    if((key.className[4]) == "W"){
+    if ((key.className[4]) == "W") {
       key.style.backgroundColor = "ivory"
       key.style.color = "black"
     } else {
@@ -104,10 +104,10 @@ const Keyboard = () => {
     }
   }
 
-  const showNoteNames = () => { 
+  const showNoteNames = () => {
     let keyLabel = document.querySelectorAll("p.keyLabel")
     keyLabel.forEach((label) => {
-      if (label.style.color != "transparent"){
+      if (label.style.color != "transparent") {
         label.style.color = "transparent"
       } else {
         if (label.parentElement.className[4] == "W") {
@@ -123,9 +123,9 @@ const Keyboard = () => {
     <div id="keys">
       <Keys k={octave} handleTrigger={handleTrigger} handleRelease={handleRelease} />
       <Keys k={octave + 1} handleTrigger={handleTrigger} handleRelease={handleRelease} />
-      <Keys k={octave + 2} handleTrigger={handleTrigger} handleRelease={handleRelease} />
-      <div id={`C${octave + 3}`} 
-        className="cToEWhite" 
+      {/* <Keys k={octave + 2} handleTrigger={handleTrigger} handleRelease={handleRelease} /> */}
+      <div id={`C${octave +2}`}
+        className="cToEWhite"
         onMouseDown={handleTrigger}
         onMouseUp={handleRelease}
         onDragEnter={handleTrigger}
@@ -135,13 +135,13 @@ const Keyboard = () => {
       <div id="octave-buttons">
         <label htmlFor="octave-btn-container">Octave</label>
         <div id="octave-btn-container"></div>
-          <button id="octave-up" className="octave-btn" onClick={() => setOctave(octave + 1)}><b>+</b></button>
-          <button id="octave-down" className="octave-btn" onClick={() => setOctave(octave - 1)}><b>-</b></button>
-          <button id="note-names" className="show-notenames" onClick={showNoteNames}>C#</button>
+        <button id="octave-up" className="octave-btn" onClick={() => setOctave(octave + 1)}><b>+</b></button>
+        <button id="octave-down" className="octave-btn" onClick={() => setOctave(octave - 1)}><b>-</b></button>
+        <button id="note-names" className="show-notenames" onClick={showNoteNames}>C#</button>
       </div>
     </div>
   )
 
 }
 
-export default Keyboard
+export default TadlabMiniKeyboard

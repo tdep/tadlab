@@ -1,0 +1,254 @@
+@font-face {
+  font-family: LCD;
+  src: '../../src/assets/fonts/LCD-N__.woff'
+}
+
+#tadlab-mini-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background-color: darkolivegreen;
+  height: 100vh;
+}
+
+#spacer-above {
+  height: 250px;
+}
+
+
+#tadlab-mini-userinterface {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-evenly; */
+  align-items: center;
+  min-height: 400px;
+  /* min-width: 400px; */
+ 
+}
+
+#tadlab-mini-case {
+  display: flex;
+  flex-direction: column;
+  border: 3px solid #552905;
+  border-radius: 6px;
+  background-color: #552905;
+}
+
+#tadlab-mini-controls {
+  display: flex;
+  flex-direction: row;
+  min-height: 200px;
+  min-width: 400px;
+  height: 250px;
+  width: 50vw;
+  margin: 0 10px
+}
+
+#tadlab-mini-keyboard {
+  display: block;
+}
+
+#oscillators {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin: 8px;
+  border: 1px solid black;
+  border-radius: 5px;
+
+}
+
+.osc-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.control-module {
+  width:150px;
+  height: 93%;
+}
+
+.waveform-selectors {
+  height: 20px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+}
+
+#efx-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: normal;
+  height: 93%;
+  margin: 8px;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.efx-btn-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.control-toggle {
+  position: relative;
+  top: 0px;
+  background: #a01b1b;
+  padding: 10px 10px;
+  margin: 0 10px;
+  border: 1px solid #a01b1b;
+  border-radius: 5px;
+  box-shadow: 0px 5px 0px #580e0e;
+  color: #fff;
+  text-shadow: 1px 1px #a01b1b;
+  transition: All 250ms ease;
+}
+
+.control-toggle:active {
+  position: relative;
+  top: 5px;
+  box-shadow: none !important;
+  transition: All 250ms ease;
+}
+
+.rvb-toggle {
+  position: relative;
+  top: 0px;
+  background: #1b486d;
+  padding: 10px 10px;
+  margin: 0 10px;
+  border: 1px solid #07121b;
+  border-radius: 5px;
+  box-shadow: 0px 5px 0px #07121b;
+  color: #fff;
+  text-shadow: 1px 1px #07121b;
+  transition: All 250ms ease;
+}
+
+.rvb-toggle:active {
+  position: relative;
+  top: 5px;
+  box-shadow: none !important;
+  transition: All 250ms ease;
+}
+
+.trem-toggle {
+  position: relative;
+  top: 0px;
+  background: #1b486d;
+  padding: 10px 10px;
+  margin: 0 10px;
+  border: 1px solid #07121b;
+  border-radius: 5px;
+  box-shadow: 0px 5px 0px #07121b;
+  color: #fff;
+  text-shadow: 1px 1px #07121b;
+  transition: All 250ms ease;
+}
+
+.trem-toggle:active {
+  position: relative;
+  top: 5px;
+  box-shadow: none !important;
+  transition: All 250ms ease;
+}
+
+#powerSwitch {
+  display: flex;
+  flex-direction: row;
+  margin-left: 10px;
+}
+
+#power {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#pwrLED {
+  height: 12px;
+  width: 12px;
+  background-color: #9B2226;
+  border: 1px solid black;
+  border-radius: 50%;
+  margin-left: 5px;
+  ;
+}
+
+#pwrLabel {
+  font-size: 10px;
+}
+
+/* Slider inputs */
+input:checked+.slider {
+  background-color: #343A40;
+}
+
+input:focus+.slider {
+  box-shadow: 0 0 1px #343A40;
+}
+
+input:checked+.slider:before {
+  -webkit-transform: translateX(16px);
+  -ms-transform: translateX(16px);
+  transform: translate(16px);
+}
+
+/* The slider */
+.slider {
+  display: flex;
+  position: absolute;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #343A40;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 4px;
+  bottom: 4px;
+  background-color: #9B2226;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 20px;
+  border: 1px solid #DEE2E6;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+  border: 1px solid #ADB5BD;
+}
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 28px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0
+}
+

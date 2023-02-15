@@ -5,7 +5,7 @@ export const QuickAccess = () => {
 
 const navigate = useNavigate()
   const openLink = () => {
-
+    navigate('/tadlabmini')
   }
 
   const tiles = [1, 2, 3]

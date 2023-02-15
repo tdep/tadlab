@@ -114,17 +114,17 @@ export const ADSRFunction = () => {
 //   let v = e.options[e.selectedIndex].value
 //   osc.connect(channels[v])
 // }
-export const osc1 = new Tone.PolySynth(Tone.Synth).toDestination()
+// export const osc1 = new Tone.PolySynth(Tone.Synth).toDestination()
 // export const osc1 = new Tone.Synth()
-export const reverb = new Tone.Reverb({
-  decay: 2,
-  preDelay: 1,
-  wet: 1
-})
+// export const reverb = new Tone.Reverb({
+//   decay: 2,
+//   preDelay: 1,
+//   wet: 1
+// })
 
-export const tremelo = new Tone.Tremolo(9, 0.75).start()
+// export const tremelo = new Tone.Tremolo(9, 0.75).start()
 
-export const crusher = new Tone.BitCrusher(4)
+// export const crusher = new Tone.BitCrusher(4)
 
 export const Oscillator1 = () => {
   const [freq, setFreq] = useState(0)

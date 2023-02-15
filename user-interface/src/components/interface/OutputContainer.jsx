@@ -1,5 +1,5 @@
 import * as Tone from 'tone'
-import { PowerSwitch } from '../interface_components/PowerSwitch'
+// import { PowerSwitch } from '../interface_components/PowerSwitch'
 import { VolumeKnob } from '../interface_components/VolumeKnob'
 import { PanKnob } from '../interface_components/PanKnob'
 import '../../../src/styling/interface/modulepanel.css'
@@ -32,7 +32,7 @@ const OutputContainer = () => {
         <div id="indicatorsAndSwitch" >
           <div id="power">
             <p id="pwrLabel">off / on</p>
-            <PowerSwitch />
+            {/* <PowerSwitch /> */}
             <div id="pwrLED" ></div>
           </div>
           <div id="outputSignal">

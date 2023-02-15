@@ -1,6 +1,6 @@
-import { osc1 } from "../tonejs/Oscillator"
+// import { osc1 } from "../tonejs/Oscillator"
 import * as Tone from 'tone'
-import { keyBoardTrigger } from "../tonejs/NoteTrigger"
+// import { keyBoardTrigger } from "../tonejs/NoteTrigger"
 
 export const Keys = ({k, handleTrigger, handleRelease}) => {
   const now = Tone.now()
