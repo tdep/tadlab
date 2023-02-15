@@ -1,6 +1,9 @@
-
+import { useNavigate } from "react-router-dom"
+import { Sidebar } from "../menus/Sidebar"
 
 export const QuickAccess = () => {
+
+const navigate = useNavigate()
   const openLink = () => {
 
   }
@@ -10,8 +13,8 @@ export const QuickAccess = () => {
     <div id="quickLinksContainer">
       <div className="tiles">
         {tiles.map((tile) => {
-          return(
-            <div onClick={() => {openLink()}}>
+          return (
+            <div onClick={() => { openLink() }}>
               {
                 tiles.map((tile) => {
                   return (
@@ -27,4 +30,5 @@ export const QuickAccess = () => {
       </div>
     </div>
   )
+
 }
