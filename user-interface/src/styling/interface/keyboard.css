@@ -3,8 +3,8 @@
   flex-direction: row;
   min-height: 300px;
   min-width: 550px;
-  height: 98%;
-  width: 95.5%;
+  height: 100%;
+  width: 84%;
   background-color: rgb(75, 75, 75);
 }
 
@@ -26,11 +26,19 @@
   border: 2px solid black;
   border-radius: 0 0 5px 5px;
   background-color: ivory;
-  box-shadow: inset 0px 2px 2px black;
+  box-shadow: inset 0px 2px 2px black, 0px 3px 3px black;
 }
 
 .cToEWhite:hover {
   background-color: rgb(222, 217, 201);
+}
+
+.cToEWhite:active {
+  position: relative;
+  top: 0px;
+  height: 295px;
+  box-shadow: 0px 0px 0px black, inset 2px 2px 2px black;
+  transition: All 250ms ease;
 }
 
 .black {
@@ -75,7 +83,15 @@
   border: 2px solid black;
   border-radius: 0 0 5px 5px;
   background-color: ivory;
-  box-shadow: inset 0px 2px 2px black;
+  box-shadow: inset 0px 2px 2px black, 0px 3px 3px black;
+}
+
+.fToBWhite:active {
+  position: relative;
+  top: 0px;
+  height: 295px;
+  box-shadow: 0px 0px 0px black, inset 2px 2px 2px black;
+  transition: All 250ms ease;
 }
 
 .fToBWhite:hover {
@@ -99,41 +115,6 @@
 
 .fToBBlack:hover {
   background-color: rgb(81, 80, 80);
-}
-
-#octave-buttons {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 12px;
-}
-
-#octave-buttons label {
-  color: ivory;
-  font-weight: bold;
-}
-
-.octave-btn {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  height: 50px;
-  width: 50px;
-  font-size: 30px;
-  border-radius: 10px;
-}
-
-.show-notenames {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    height: 30px;
-    width: 30px;
-    font-size: 12px;
-    border-radius: 10px;
 }
 
 .keyLabel {

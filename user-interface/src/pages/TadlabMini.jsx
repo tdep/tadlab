@@ -35,12 +35,6 @@ const TadlabMini = () => {
     osc.oscillator.type = v
   }
 
-  const toggleBypass = (module) => {
-    let bypass = document.getElementById(module)
-
-
-  }
-
   const now = Tone.now()
   const osc1 = new Tone.PolySynth(Tone.Synth).toDestination()
   const osc2 = new Tone.PolySynth(Tone.Synth).toDestination()
@@ -63,7 +57,9 @@ const TadlabMini = () => {
       let note = keyKey[key]
       let domKey = document.getElementById(note)
       osc1.triggerAttack(note, now)
-      domKey.style.backgroundColor = "#8c1212"
+      domKey.style.backgroundColor = "#f57936"
+      domKey.style.height = "295px"
+      domKey.style.boxShadow = "0px 0px 0px black, inset 2px 2px 2px black"
       domKey.style.color = "ivory"
       let hover = document.addEventListener("mouseover", e => { //to re-establish the hover effect after a keypress
         let key = e.target
@@ -102,6 +98,8 @@ const TadlabMini = () => {
       if ((domKey.className[4]) == "W") {
         domKey.style.backgroundColor = "ivory"
         domKey.style.color = "black"
+        domKey.style.height = "300px"
+        domKey.style.boxShadow = "inset 0px 2px 2px black, 0px 3px 3px black"
       } else {
         domKey.style.backgroundColor = "black"
       }
@@ -121,8 +119,10 @@ const TadlabMini = () => {
     switch (e.type) {
       case "mousedown":
         osc1.triggerAttack(note, now)
-        key.style.backgroundColor = "#8c1212"
+        key.style.backgroundColor = "#f57936"
         key.style.color = "ivory"
+        key.style.height = "295px"
+        key.style.boxShadow = "0px 0px 0px black, inset 2px 2px 2px black"
       default:
         return
     }
@@ -136,6 +136,8 @@ const TadlabMini = () => {
     if ((key.className[4]) == "W") {
       key.style.backgroundColor = "ivory"
       key.style.color = "black"
+      key.style.height = "300px"
+      key.style.boxShadow = "inset 0px 2px 2px black, 0px 3px 3px black"
     } else {
       key.style.backgroundColor = "black"
     }
@@ -157,9 +159,15 @@ const TadlabMini = () => {
   }
 
   const efxBtnArray = [ 1, 2, 3, 4]
-  const sqPresetArray = [1, 2, 3, 4]
+  const sqPresetArray = [1, 2, 3, 4, 5]
   const sqXArray = [1, 2, 3, 4, 5, 6, 7, 8]
-  const sqYArray = [1, 2, 3, 4]
+  const sqYArray = ["G", "F", "E", "D", "C"]
+  const synthArray = [
+    {id: "AM", type: "AMSynth"}, 
+    {id: "FM", type: "FMSynth"}, 
+    {id: "Mb", type: "MembraneSynth"}, 
+    {id: "Pl", type: "PluckSynth"}
+  ]
 
   let oscOn = {
     'osc1': false,
@@ -290,35 +298,47 @@ const TadlabMini = () => {
             </div>
             <div id="tadlab-mini-sequencer">
               <div id="sqc-container">
-                <div id="reverb" className="efx-btn-container">
+                <div id="sqc-presets" className="sqc-presets-container">
                   {sqPresetArray.map((button) => {
                     return (
                       <div id="sqc-btn-container" className="efx">
-                        <div className="efx-label">{button}</div>
-                        <button id={`rvb${button}`} className="rvb-toggle" onClick={toggleRvb}>|R|</button>
+                        <button id={`rvb${button}`} className="sqc-btn" onClick={toggleRvb}>|{button}</button>
                       </div>
                     )
                   })}
                 </div>
-                <div id="tremelo" className="efx-btn-container">
-                  {sqYArray.map((row) => {
+                <div id="sqc-matrix">
+                  {sqXArray.map((row, i) => {
                     return (
-                      sqXArray.map((button) => {
-                        return (
-                          <div id="tremelo-btn-container" className="efx">
-                            <button id={`trem${button}`} className="rvb-toggle" onClick={toggleTrem}>|T|</button>
-                            <div className="efx-label">{button}</div>
-                          </div>
-                        )
-                      })
-                    )
-                  })}
+                      <div className="column" bar={sqXArray[i]}>
+                        {sqYArray.map((pitch) => {
+                          return (
+                            <div className="note" note={pitch}>
+                              <button className="sqc-btn matrix" onClick={toggleTrem}>|{pitch}</button>
+                            </div>
+                          )}
+                        )}
+                      </div>
+                    )}
+                  )}
                 </div>
               </div>
             </div>
           </div>
 
           <div id="tadlab-mini-keyboard">
+            <div id="mod-container">
+              <div id="synth-select-buttons">
+                {synthArray.map((synth) => {
+                  let id = synth.id
+                  return (
+                    <div id="sqc-btn-container" className="efx">
+                      <button id={`${id}`} className="synth-btn" onClick={toggleRvb}>{id}</button>
+                    </div>
+                  )
+                })}
+              </div>
+            </div>
             <div id="keys">
               <Keys k={octave} handleTrigger={handleTrigger} handleRelease={handleRelease} />
               <Keys k={octave + 1} handleTrigger={handleTrigger} handleRelease={handleRelease} />
@@ -331,7 +351,7 @@ const TadlabMini = () => {
               ><p className="keyLabel">C</p>
               </div>
               <div id="octave-buttons">
-                <label htmlFor="octave-btn-container">Octave</label>
+                <label htmlFor="octave-btn-container">8ve</label>
                 <div id="octave-btn-container"></div>
                 <button id="octave-up" className="octave-btn" onClick={() => setOctave(octave + 1)}><b>+</b></button>
                 <button id="octave-down" className="octave-btn" onClick={() => setOctave(octave - 1)}><b>-</b></button>
