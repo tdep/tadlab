@@ -183,8 +183,6 @@ const TadlabMini = () => {
           }
         })
     }
-    
-    
 
   }
 
@@ -206,13 +204,18 @@ const TadlabMini = () => {
   const toggleOsc = (e) => {
     let id = e.target.id
     let toggle = document.getElementById(id)
+    let waveform = document.getElementById(`${id.substr(0, 4)}Waveform`)
     if (oscOn[id]) {
       toggle.style.backgroundColor = "#a01b1b"
       oscOn[id] = false
+      waveform.style.pointerEvents = "auto"
+      waveform.style.color = "#13b307"
       console.log("off")
     } else {
       toggle.style.backgroundColor = "#ff4608"
       oscOn[id] = true
+      waveform.style.pointerEvents = "none"
+      waveform.style.color = "#5e6368"
       console.log("on")
     }
   }
@@ -223,36 +226,57 @@ const TadlabMini = () => {
     'rvb3': false,
     'rvb4': false
   }
+  let activeRvb = ""
   const toggleRvb = (e) => {
     let id = e.target.id
     let toggle = document.getElementById(id)
+    let toggledRvb = document.getElementById(activeRvb)
     if (rvbOn[id]) {
       toggle.style.backgroundColor = "#1b486d"
       rvbOn[id] = false
-      console.log("off")
     } else {
-      toggle.style.backgroundColor = "#008cff"
-      rvbOn[id] = true
-      console.log("on")
+      if (activeRvb != id && activeRvb != "") {
+        rvbOn[activeRvb] = false
+        toggledRvb.style.backgroundColor = "#1b486d"
+        toggle.style.backgroundColor = "#008cff"
+        rvbOn[id] = true
+        activeRvb = id
+      } else {
+        toggle.style.backgroundColor = "#008cff"
+        rvbOn[id] = true
+        activeRvb = id
+      }
+      console.log(activeRvb)
     }
   }
+
   let tremOn = {
     'trem1': false,
     'trem2': false,
     'trem3': false,
     'trem4': false
   }
+  let activeTrem = ""
   const toggleTrem = (e) => {
     let id = e.target.id
     let toggle = document.getElementById(id)
+    let toggledTrem = document.getElementById(activeTrem)
     if (tremOn[id]) {
       toggle.style.backgroundColor = "#1b486d"
       tremOn[id] = false
-      console.log("off")
     } else {
-      toggle.style.backgroundColor = "#008cff"
-      tremOn[id] = true
-      console.log("on")
+      if (activeTrem != id && activeTrem != "") {
+        tremOn[activeTrem] = false
+        toggledTrem.style.backgroundColor = "#1b486d"
+        toggle.style.backgroundColor = "#008cff"
+        tremOn[id] = true
+        activeTrem = id
+      } else {
+        toggle.style.backgroundColor = "#008cff"
+        tremOn[id] = true
+        activeTrem = id
+      }
+      console.log(activeTrem)
     }
   }
 
@@ -262,17 +286,27 @@ const TadlabMini = () => {
     'preset3': false,
     'preset4': false
   }
+  let activePreset = ""
   const togglePreset = (e) => {
     let id = e.target.id
     let toggle = document.getElementById(id)
+    let toggledPreset = document.getElementById(activePreset)
     if (presetOn[id]) {
       toggle.style.backgroundColor = "#bf6331"
       presetOn[id] = false
-      console.log("off")
     } else {
-      toggle.style.backgroundColor = "#ffa600"
-      presetOn[id] = true
-      console.log("on")
+      if (activePreset != id && activePreset != "") {
+        presetOn[activePreset] = false
+        toggledPreset.style.backgroundColor = "#bf6331"
+        toggle.style.backgroundColor = "#ffa600"
+        presetOn[id] = true
+        activePreset = id
+      } else {
+        toggle.style.backgroundColor = "#ffa600"
+        presetOn[id] = true
+        activePreset = id
+      }
+      console.log(activePreset)
     }
   }
 
@@ -313,7 +347,6 @@ const TadlabMini = () => {
     if (synthOn[id]) {
       toggle.style.backgroundColor = "#a01b1b"
       synthOn[id] = false
-      
     } else {
       if (activeSynth != id && activeSynth != ""){
         synthOn[activeSynth] = false

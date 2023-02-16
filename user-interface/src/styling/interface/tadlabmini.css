@@ -437,7 +437,7 @@
   border-radius: 50%;
   transition: 3.2s;
   box-shadow: 
-    inset 0px -3px 3px #580e0e, 
+    inset 0px 0px 3px #580e0e, 
     inset 0px 1px 3px #DEE2E6,
     2px 2px 3px #760508,
     -2px -2px 3px #760508
@@ -479,7 +479,7 @@ input:checked+.slider:before {
   transform: translate(70px);
   box-shadow: 
     inset -3px 0px 3px #580e0e, 
-    -5px 0px 1px rgb(40, 35, 35), 
+    3px 0px 3px rgb(40, 35, 35), 
     inset 0px 1px 3px #DEE2E6;
 }
 
@@ -508,7 +508,7 @@ input:checked+.slider:before {
   transition: .4s;
   box-shadow : 
     inset 3px 0px 3px #580e0e, 
-    10px 0px 3px rgb(40, 35, 35), 
+    -7px 0px 3px rgb(40, 35, 35), 
     inset 0px 1px 3px #DEE2E6;
 }
 
