@@ -65,6 +65,17 @@
   box-shadow: 0px 2px 2px black;
 }
 
+.top-contour {
+  height: 95%;
+  width: 98%;
+  margin-bottom: 8px;
+  border-width: 0 1px 1px 1px;
+  border-color: rgb(46, 46, 46);
+  border-style: solid;
+  border-radius: 0 0 20px 20px;
+  box-shadow: 0px 3px 9px rgb(46, 46, 46), inset 1px -3px 3px rgb(46, 46, 46), inset -1px -3px 3px rgb(46, 46, 46)
+}
+
 .cToEBlack:hover {
   background-color: rgb(81, 80, 80);
 }
@@ -134,5 +145,6 @@
 }
 
 .keyLabel {
-  display: show
+  display: none;
+  pointer-events: none
 }

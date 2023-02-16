@@ -8,6 +8,8 @@ import '../../src/styling/interface/tadlabmini.css'
 
 const TadlabMini = () => {
   const [octave, setOctave] = useState(3);
+  const [onOff, setOnOff] = useState(false);
+  const [state, setState] = useState("")
   // let octave = 3
   const dispatch = useDispatch()
 
@@ -153,25 +155,43 @@ const TadlabMini = () => {
     }
   }
 
-  const showNoteNames = () => {
+  let show = false
+  const showNoteNames = (e) => {
+    console.log(show)
+    let id = e.target.id
+    let showBtn = document.getElementById(id)
     let keyLabel = document.querySelectorAll("p.keyLabel")
-    keyLabel.forEach((label) => {
-      if (label.style.color != "transparent") {
-        label.style.color = "transparent"
-      } else {
-        if (label.parentElement.className[4] == "W") {
-          label.style.color = "black"
-        } else {
-          label.style.color = "ivory"
-        }
-      }
-    })
+    if (!show) {
+      showBtn.style.position = "relative"
+      showBtn.style.top = "0px"
+      showBtn.style.backgroundColor = "#a01b1b"
+      showBtn.style.boxShadow = "0px 5px 0px #580e0e, 0px 7px 1px #5e6368"
+      showBtn.style.transition = "All 250ms ease"
+      show = true
+    } else {
+      showBtn.style.position = "relative"
+      showBtn.style.top = "5px"
+      showBtn.style.backgroundColor = "#ff4608"
+      showBtn.style.boxShadow = "inset 1px 2px 2px #07121b"
+      showBtn.style.transition = "All 250ms ease"
+      show = false
+      keyLabel.forEach((label) => {
+          if (label.parentElement.className[4] == "W") {
+            label.style.color = "black"
+          } else {
+            label.style.color = "ivory"
+          }
+        })
+    }
+    
+    
+
   }
 
   const efxBtnArray = [ 1, 2, 3, 4]
   const sqPresetArray = [1, 2, 3, 4, 5]
   const sqXArray = [1, 2, 3, 4, 5, 6, 7, 8]
-  const sqYArray = ["G", "F", "E", "D", "C"]
+  const sqYArray = ["A", "G", "E", "D", "C"]
   const synthArray = [
     {id: "AM", type: "AMSynth"}, 
     {id: "FM", type: "FMSynth"}, 
@@ -236,12 +256,57 @@ const TadlabMini = () => {
     }
   }
 
+  let presetOn = {
+    'preset1': false,
+    'preset2': false,
+    'preset3': false,
+    'preset4': false
+  }
+  const togglePreset = (e) => {
+    let id = e.target.id
+    let toggle = document.getElementById(id)
+    if (presetOn[id]) {
+      toggle.style.backgroundColor = "#bf6331"
+      presetOn[id] = false
+      console.log("off")
+    } else {
+      toggle.style.backgroundColor = "#ffa600"
+      presetOn[id] = true
+      console.log("on")
+    }
+  }
+
+  let sqcBtnOn = {
+    '1A': false, '2A': false, '3A': false, '4A': false, '5A': false, '6A': false, '7A': false, '8A': false,
+    '1G': false, '2G': false, '3G': false, '4G': false, '5G': false, '6G': false, '7G': false, '8G': false,
+    '1E': false, '2E': false, '3E': false, '4E': false, '5E': false, '6E': false, '7E': false, '8E': false,
+    '1D': false, '2D': false, '3D': false, '4D': false, '5D': false, '6D': false, '7D': false, '8D': false,
+    '1C': false, '2C': false, '3C': false, '4C': false, '5C': false, '6C': false, '7C': false, '8C': false,
+  }
+  const toggleSqcButton = (e) => {
+    let id = e.target.id
+    let btn = document.getElementById(id)
+    if (sqcBtnOn[id]) {
+      btn.style.backgroundColor = "#234b20"
+      btn.style.boxShadow = "0px 5px 0px #07121b, 0px 7px 1px #5e6368"
+      btn.style.top = "0px"
+      sqcBtnOn[id] = false
+    } else {
+      btn.style.backgroundColor = "#13b307"
+      btn.style.boxShadow = "inset 1px 2px 2px #07121b"
+      btn.style.top = "5px"
+      sqcBtnOn[id] = true
+    }
+  }
+
+
+
   return (
     <div id="tadlab-mini-container">
       <div id="spacer-left"></div>
       <div id="tadlab-mini-userinterface">
         <div id="spacer-above"></div>
-        <div id="tadlab-mini-case">
+        <div id="tadlab-mini-case" className="grain">
           <div id="tadlab-mini-controls">
             <div id="power">
               <div id="pwrSwitch">
@@ -312,7 +377,7 @@ const TadlabMini = () => {
                   {sqPresetArray.map((button) => {
                     return (
                       <div id="sqc-btn-container" className="efx">
-                        <button id={`rvb${button}`} className="sqc-btn" onClick={toggleRvb}>|{button}</button>
+                        <button id={`preset${button}`} className="sqc-btn" onClick={togglePreset}>|{button}</button>
                       </div>
                     )
                   })}
@@ -324,7 +389,11 @@ const TadlabMini = () => {
                         {sqYArray.map((pitch) => {
                           return (
                             <div className="note" note={pitch}>
-                              <button className="sqc-btn matrix" onClick={toggleTrem}>|{pitch}</button>
+                              <button 
+                                id={row + pitch}
+                                className="sqc-btn matrix" 
+                                onClick={toggleSqcButton}
+                              >|{pitch}</button>
                             </div>
                           )}
                         )}
