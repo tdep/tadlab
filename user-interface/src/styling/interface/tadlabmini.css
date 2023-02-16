@@ -217,8 +217,13 @@
 
 .waveform-selectors {
   height: 20px;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-
+  width: 82px;
+  font-size: 11px;
+  text-align: center;
+  font-family: 'Orbitron', sans-serif;
+  margin-left: 8px;
+  background-color: #343A40;
+  color: #13b307
 }
 
 #efx-container {

@@ -299,6 +299,39 @@ const TadlabMini = () => {
     }
   }
 
+  let synthOn = {
+    'AM': false,
+    'FM': false,
+    'Mb': false,
+    'Pl': false
+  }
+  let activeSynth = ""
+  const toggleSynth = (e) => {
+    let id = e.target.id
+    let toggle = document.getElementById(id)
+    let toggledSynth = document.getElementById(activeSynth)
+    if (synthOn[id]) {
+      toggle.style.backgroundColor = "#a01b1b"
+      synthOn[id] = false
+      
+    } else {
+      if (activeSynth != id && activeSynth != ""){
+        synthOn[activeSynth] = false
+        toggledSynth.style.backgroundColor = "#a01b1b"
+        toggle.style.backgroundColor = "#ff4608"
+        synthOn[id] = true
+        activeSynth = id
+      } else {
+        toggle.style.backgroundColor = "#ff4608"
+        synthOn[id] = true
+        activeSynth = id
+      }
+      console.log(activeSynth)
+    }
+  }
+
+
+
 
 
   return (
@@ -412,7 +445,7 @@ const TadlabMini = () => {
                   let id = synth.id
                   return (
                     <div id="sqc-btn-container" className="efx">
-                      <button id={`${id}`} className="synth-btn" onClick={toggleRvb}>{id}</button>
+                      <button id={`${id}`} className="synth-btn" onClick={toggleSynth}>{id}</button>
                     </div>
                   )
                 })}
