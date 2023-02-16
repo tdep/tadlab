@@ -37,10 +37,34 @@ const TadlabMini = () => {
     osc.oscillator.type = v
   }
 
+  const synthArray = [
+    { id: "AM", type: "AMSynth" },
+    { id: "FM", type: "FMSynth" },
+    { id: "Mb", type: "MembraneSynth" },
+    { id: "Pl", type: "PluckSynth" }
+  ]
+
+
   const now = Tone.now()
-  const osc1 = new Tone.PolySynth(Tone.Synth).toDestination()
-  const osc2 = new Tone.PolySynth(Tone.Synth).toDestination()
-  osc1.volume.value = -10
+  let gainLevel = 0
+  const gainNode = new Tone.Gain(gainLevel).toDestination()
+  const osc = new Tone.PolySynth(Tone.Synth)
+
+  const AMSynth = new Tone.AMSynth()
+  const FMSynth = new Tone.FMSynth
+  const MbSynth = new Tone.MembraneSynth
+  const PlSynth = new Tone.PluckSynth
+
+  const trem1 = new Tone.Tremolo(1, 0.75)
+  const trem2 = new Tone.Tremolo(3, 0.75)
+  const trem3 = new Tone.Tremolo(9, 0.75)
+  const trem4 = new Tone.Tremolo(18, 0.75)
+
+  const rvb1 = new Tone.Reverb(1)
+  const rvb2 = new Tone.Reverb(2)
+  const rvb3 = new Tone.Reverb(4)
+  const rvb4 = new Tone.Reverb(5)
+
 
   const keyKey = {
     "a": `C${octave}`, "w": `C#${octave}`, "s": `D${octave}`, "e": `D#${octave}`, "d": `E${octave}`,
@@ -58,7 +82,7 @@ const TadlabMini = () => {
       let key = e.key
       let note = keyKey[key]
       let domKey = document.getElementById(note)
-      osc1.triggerAttack(note, now)
+      osc.triggerAttack(note, now)
       domKey.style.backgroundColor = "#f57936"
       if ((domKey.className[4]) == "W") {
         domKey.style.height = "295px"
@@ -83,7 +107,7 @@ const TadlabMini = () => {
           return;
         }
         let key = e.target
-        osc1.triggerRelease()
+        osc.triggerRelease()
         if (key.id == note) {
           if (key.className[4] == "W") {
             key.style.backgroundColor = "ivory"
@@ -101,7 +125,7 @@ const TadlabMini = () => {
       let key = e.key
       let note = keyKey[key]
       let domKey = document.getElementById(note)
-      osc1.triggerRelease(note)
+      osc.triggerRelease(note)
       if ((domKey.className[4]) == "W") {
         domKey.style.backgroundColor = "ivory"
         domKey.style.color = "black"
@@ -125,7 +149,7 @@ const TadlabMini = () => {
     let note = key.id
     switch (e.type) {
       case "mousedown":
-        osc1.triggerAttack(note, now)
+        osc.triggerAttack(note, now)
         key.style.backgroundColor = "#f57936"
         if ((key.className[4]) == "W") {
           key.style.color = "ivory"
@@ -144,7 +168,7 @@ const TadlabMini = () => {
   const handleRelease = (e) => {
     let key = e.target
     let note = key.id
-    osc1.triggerRelease(note, now)
+    osc.triggerRelease(note, now)
     if ((key.className[4]) == "W") {
       key.style.backgroundColor = "ivory"
       key.style.color = "black"
@@ -190,12 +214,6 @@ const TadlabMini = () => {
   const sqPresetArray = [1, 2, 3, 4, 5]
   const sqXArray = [1, 2, 3, 4, 5, 6, 7, 8]
   const sqYArray = ["A", "G", "E", "D", "C"]
-  const synthArray = [
-    {id: "AM", type: "AMSynth"}, 
-    {id: "FM", type: "FMSynth"}, 
-    {id: "Mb", type: "MembraneSynth"}, 
-    {id: "Pl", type: "PluckSynth"}
-  ]
 
   let oscOn = {
     'osc1': false,
@@ -210,12 +228,14 @@ const TadlabMini = () => {
       oscOn[id] = false
       waveform.style.pointerEvents = "auto"
       waveform.style.color = "#13b307"
+      gainNode.gain.rampTo(0, 0.3)
       console.log("off")
     } else {
       toggle.style.backgroundColor = "#ff4608"
       oscOn[id] = true
       waveform.style.pointerEvents = "none"
       waveform.style.color = "#5e6368"
+      gainNode.gain.rampTo(1, 0.3)
       console.log("on")
     }
   }
@@ -241,6 +261,7 @@ const TadlabMini = () => {
         toggle.style.backgroundColor = "#008cff"
         rvbOn[id] = true
         activeRvb = id
+        
       } else {
         toggle.style.backgroundColor = "#008cff"
         rvbOn[id] = true
