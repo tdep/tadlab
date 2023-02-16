@@ -20,7 +20,7 @@ const LoginPage = () => {
       console.log(res.user)
       Cookies.set('token', res.token)
       setUser(res.user)
-      navigate("/home")
+      navigate("/tadlabmini")
     }
   }
 

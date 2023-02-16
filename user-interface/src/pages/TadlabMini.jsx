@@ -2,6 +2,7 @@ import { Keys } from '../components/interface_components/Keys';
 import { togglePwr } from '../features/interfaceSlice'
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
+import MIDIAccess from './MIDIAccess';
 import * as Tone from 'tone'
 
 import '../../src/styling/interface/tadlabmini.css'
@@ -48,23 +49,64 @@ const TadlabMini = () => {
   const now = Tone.now()
   let gainLevel = 0
   const gainNode = new Tone.Gain(gainLevel).toDestination()
-  const osc = new Tone.PolySynth(Tone.Synth)
+  
+  // const AMSynth = new Tone.AMSynth()
+  // const FMSynth = new Tone.FMSynth
+  // const MbSynth = new Tone.MembraneSynth
+  // const PlSynth = new Tone.PluckSynth
+  
+  const trem1 = new Tone.Tremolo().connect(gainNode).start()
+  trem1.set({
+    depth: 0.8,
+    wet: 0
+  })
 
-  const AMSynth = new Tone.AMSynth()
-  const FMSynth = new Tone.FMSynth
-  const MbSynth = new Tone.MembraneSynth
-  const PlSynth = new Tone.PluckSynth
-
-  const trem1 = new Tone.Tremolo(1, 0.75)
-  const trem2 = new Tone.Tremolo(3, 0.75)
-  const trem3 = new Tone.Tremolo(9, 0.75)
-  const trem4 = new Tone.Tremolo(18, 0.75)
-
-  const rvb1 = new Tone.Reverb(1)
-  const rvb2 = new Tone.Reverb(2)
-  const rvb3 = new Tone.Reverb(4)
-  const rvb4 = new Tone.Reverb(5)
-
+  // const trem2 = new Tone.Tremolo(3, 0.75)
+  // const trem3 = new Tone.Tremolo(9, 0.75)
+  // const trem4 = new Tone.Tremolo(18, 0.75)
+  
+  const rvb1 = new Tone.Reverb().connect(gainNode)
+  rvb1.set({
+    decay: 1.6,
+    preDelay: 0.01,
+    wet: 0
+  })
+  // const rvb2 = new Tone.JCReverb().connect(gainNode)
+  // rvb1.set({
+  //   roomSize: 0.2,
+  //   wet: 0
+  // })
+  // const rvb3 = new Tone.Freeverb().connect(gainNode)
+  // rvb1.set({
+  //   dampening: 440,
+  //   roomSize: 0.2,
+  //   wet: 0
+  // })
+  // const rvb4 = new Tone.Reverb().connect(gainNode)
+  // rvb1.set({
+  //   decay: 1.6,
+  //   preDelay: 0.01,
+  //   wet: 0
+  // })
+  
+  const osc = new Tone.PolySynth(Tone.Synth).connect(gainNode)
+  // const osc = new Tone.PolySynth(Tone.AMSynth).connect(gainNode)
+  // const osc = new Tone.PolySynth(Tone.FMSynth).connect(gainNode)
+  // const osc = new Tone.PolySynth(Tone.MembraneSynth).connect(gainNode)
+  // const osc = new Tone.PolySynth(Tone.PluckSynth).connect(gainNode)
+  console.log(osc.options)
+  osc.set({
+    options: {
+      oscillator: {
+        type: "sine"
+      }
+    }
+  })
+  console.log(osc.options.oscillator.type)
+  osc.chain(rvb1, trem1)
+  // osc.chain(rvb2, gainNode)
+  // osc.chain(rvb3, gainNode)
+  // osc.chain(rvb4, gainNode)
 
   const keyKey = {
     "a": `C${octave}`, "w": `C#${octave}`, "s": `D${octave}`, "e": `D#${octave}`, "d": `E${octave}`,
@@ -107,7 +149,7 @@ const TadlabMini = () => {
           return;
         }
         let key = e.target
-        osc.triggerRelease()
+        osc.triggerRelease(note, now + 1)
         if (key.id == note) {
           if (key.className[4] == "W") {
             key.style.backgroundColor = "ivory"
@@ -125,7 +167,7 @@ const TadlabMini = () => {
       let key = e.key
       let note = keyKey[key]
       let domKey = document.getElementById(note)
-      osc.triggerRelease(note)
+      osc.triggerRelease(note, now + 1)
       if ((domKey.className[4]) == "W") {
         domKey.style.backgroundColor = "ivory"
         domKey.style.color = "black"
@@ -168,7 +210,7 @@ const TadlabMini = () => {
   const handleRelease = (e) => {
     let key = e.target
     let note = key.id
-    osc.triggerRelease(note, now)
+    osc.triggerRelease(note, now + 1)
     if ((key.className[4]) == "W") {
       key.style.backgroundColor = "ivory"
       key.style.color = "black"
@@ -228,46 +270,121 @@ const TadlabMini = () => {
       oscOn[id] = false
       waveform.style.pointerEvents = "auto"
       waveform.style.color = "#13b307"
-      gainNode.gain.rampTo(0, 0.3)
-      console.log("off")
+      gainNode.set({
+        gain: 0
+      })
+      console.log(gainNode.gain.value)
     } else {
       toggle.style.backgroundColor = "#ff4608"
       oscOn[id] = true
       waveform.style.pointerEvents = "none"
       waveform.style.color = "#5e6368"
-      gainNode.gain.rampTo(1, 0.3)
-      console.log("on")
+      gainNode.set({
+        gain: 1
+      })
+      console.log(gainNode.gain.value)
     }
   }
 
   let rvbOn = {
-    'rvb1': false,
-    'rvb2': false,
-    'rvb3': false,
-    'rvb4': false
+    'rvb1': { on: false, module: rvb1 },
+    'rvb2': { on: false },
+    'rvb3': { on: false },
+    'rvb4': { on: false }
   }
   let activeRvb = ""
+  const rvbSwitchOn = (rvbId) => {
+    switch (rvbId) {
+      case "":
+        console.log(rvbId, ": off")
+        return
+      case "rvb1":
+        if (rvbOn[rvbId]){
+          rvb1.wet.value = 1
+          console.log(rvb1.wet.value)
+        }
+        return
+      case "rvb2":
+        if (rvbOn[rvbId]) {
+          // rvb2.wet.value = 1
+          // console.log(rvb2.wet.value)
+        }
+        return
+      case "rvb3":
+        if (rvbOn[rvbId]) {
+          // rvb3.wet.value = 1
+          // console.log(rvb3.wet.value)
+        }
+        return
+      case "rvb4":
+        if (rvbOn[rvbId]) {
+          // rvb4.wet.value = 1
+          // console.log(rvb4.wet.value)
+        }
+        return
+      default:
+        return
+    }
+  }
+
+  const rvbSwitchOff = (rvbId) => {
+    switch (rvbId) {
+      case "":
+        console.log(rvbId, ": off")
+        return
+      case "rvb1":
+        if (rvbOn[rvbId]){
+          rvb1.wet.value = 0
+          console.log(rvb1.wet.value)
+        }
+        return
+      case "rvb2":
+        if (rvbOn[rvbId]) {
+          // rvb2.wet.value = 0
+          // console.log(rvb2.wet.value)
+        }
+        return
+      case "rvb3":
+        if (rvbOn[rvbId]) {
+          // rvb3.wet.value = 0
+          // console.log(rvb3.wet.value)
+        }
+        return
+      case "rvb4":
+        if (rvbOn[rvbId]) {
+          // rvb4.wet.value = 0
+          // console.log(rvb4.wet.value)
+        }
+        return
+      default:
+        return
+    }
+  }
+
   const toggleRvb = (e) => {
     let id = e.target.id
     let toggle = document.getElementById(id)
     let toggledRvb = document.getElementById(activeRvb)
-    if (rvbOn[id]) {
+    if (rvbOn[id].on) { //if the selected rvb is already on
       toggle.style.backgroundColor = "#1b486d"
-      rvbOn[id] = false
+      rvbOn[id].on = false
+      // activeRvb = ""
+      rvbSwitchOff(activeRvb)
     } else {
-      if (activeRvb != id && activeRvb != "") {
-        rvbOn[activeRvb] = false
+      if (activeRvb != id && activeRvb != "") { //if the selected rvb is not already on and another rvb is on
+        rvbOn[activeRvb].on = false
         toggledRvb.style.backgroundColor = "#1b486d"
         toggle.style.backgroundColor = "#008cff"
-        rvbOn[id] = true
+        rvbOn[id].on = true
+        rvbSwitchOff(activeRvb)
         activeRvb = id
-        
-      } else {
+        rvbSwitchOn(activeRvb)
+      } else { //if the selected rvb is not already on and no other rvb is on
         toggle.style.backgroundColor = "#008cff"
-        rvbOn[id] = true
+        rvbOn[id].on = true
         activeRvb = id
+        rvbSwitchOn(activeRvb)
       }
-      console.log(activeRvb)
     }
   }
 
@@ -278,6 +395,73 @@ const TadlabMini = () => {
     'trem4': false
   }
   let activeTrem = ""
+  const tremSwitchOn = (tremId) => {
+    switch (tremId) {
+      case "":
+        console.log(tremId, ": off")
+        return
+      case "trem1":
+        if (tremOn[tremId]) {
+          trem1.wet.value = 1
+          console.log(trem1.wet.value)
+        }
+        return
+      case "trem2":
+        if (tremOn[tremId]) {
+          // trem2.wet.value = 1
+          // console.log(trem2.wet.value)
+        }
+        return
+      case "trem3":
+        if (tremOn[tremId]) {
+          // trem3.wet.value = 1
+          // console.log(trem3.wet.value)
+        }
+        return
+      case "trem4":
+        if (tremOn[tremId]) {
+          // trem4.wet.value = 1
+          // console.log(trem4.wet.value)
+        }
+        return
+      default:
+        return
+    }
+  }
+
+  const tremSwitchOff = (tremId) => {
+    switch (tremId) {
+      case "":
+        console.log(tremId, ": off")
+        return
+      case "trem1":
+        if (tremOn[tremId]) {
+          trem1.wet.value = 0
+          console.log(trem1.wet.value)
+        }
+        return
+      case "trem2":
+        if (tremOn[tremId]) {
+          // trem2.wet.value = 0
+          // console.log(trem2.wet.value)
+        }
+        return
+      case "trem3":
+        if (tremOn[tremId]) {
+          // trem3.wet.value = 0
+          // console.log(trem3.wet.value)
+        }
+        return
+      case "trem4":
+        if (tremOn[tremId]) {
+          // trem4.wet.value = 0
+          // console.log(trem4.wet.value)
+        }
+        return
+      default:
+        return
+    }
+  }
   const toggleTrem = (e) => {
     let id = e.target.id
     let toggle = document.getElementById(id)
@@ -285,17 +469,21 @@ const TadlabMini = () => {
     if (tremOn[id]) {
       toggle.style.backgroundColor = "#1b486d"
       tremOn[id] = false
+      tremSwitchOff(activeTrem)
     } else {
       if (activeTrem != id && activeTrem != "") {
         tremOn[activeTrem] = false
         toggledTrem.style.backgroundColor = "#1b486d"
         toggle.style.backgroundColor = "#008cff"
         tremOn[id] = true
+        tremSwitchOff(activeTrem)
         activeTrem = id
+        tremSwitchOn(activeTrem)
       } else {
         toggle.style.backgroundColor = "#008cff"
         tremOn[id] = true
         activeTrem = id
+        tremSwitchOn(activeTrem)
       }
       console.log(activeTrem)
     }
@@ -385,6 +573,16 @@ const TadlabMini = () => {
   }
 
 
+  const setWaveform = () => {
+    let select = document.getElementById("osc1Waveform").value
+    osc.set({ 
+      options: { 
+        oscillator: { 
+          type: select 
+        }
+      } 
+    })
+  }
 
 
 
@@ -409,8 +607,8 @@ const TadlabMini = () => {
               <div id="osc1" className="osc-container">
                 <p>Oscillator-1</p>
                 <div className="osc-inputs">
-                  <select id="osc1Waveform" className="waveform-selectors">
-                    <option name="sine" value="sine" className="waveform-option" onClick={() => handleWaveform(osc1)}>Sine</option>
+                  <select id="osc1Waveform" className="waveform-selectors" onChange={setWaveform}>
+                    <option name="sine" value="sine" className="waveform-option">Sine</option>
                     <option name="triangle" value="triangle" className="waveform-option" >Triangle</option>
                     <option name="sawtooth" value="sawtooth" className="waveform-option" >Sawtooth</option>
                     <option name="square" value="square" className="waveform-option" >Square</option>
@@ -425,7 +623,7 @@ const TadlabMini = () => {
                 <p>Oscillator-2</p>
                 <div className="osc-inputs">
                   <select id="osc2Waveform" className="waveform-selectors">
-                    <option name="sine" value="sine" className="waveform-option" onClick={() => handleWaveform(osc2)}>Sine</option>
+                    <option name="sine" value="sine" className="waveform-option">Sine</option>
                     <option name="triangle" value="triangle" className="waveform-option" >Triangle</option>
                     <option name="sawtooth" value="sawtooth" className="waveform-option" >Sawtooth</option>
                     <option name="square" value="square" className="waveform-option" >Square</option>
@@ -528,6 +726,7 @@ const TadlabMini = () => {
         </div>
 
       </div>
+      <MIDIAccess />
     </div>
   )
 }
