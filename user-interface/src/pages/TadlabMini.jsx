@@ -58,9 +58,14 @@ const TadlabMini = () => {
       let domKey = document.getElementById(note)
       osc1.triggerAttack(note, now)
       domKey.style.backgroundColor = "#f57936"
-      domKey.style.height = "295px"
-      domKey.style.boxShadow = "0px 0px 0px black, inset 2px 2px 2px black"
-      domKey.style.color = "ivory"
+      if ((domKey.className[4]) == "W") {
+        domKey.style.height = "295px"
+        domKey.style.boxShadow = "0px 0px 0px black, inset 2px 2px 2px black"
+        domKey.style.color = "ivory"
+      } else {
+        domKey.style.height = "180px"
+        domKey.style.boxShadow = "0px 1px 2px black;"
+      }
       let hover = document.addEventListener("mouseover", e => { //to re-establish the hover effect after a keypress
         let key = e.target
         if (key.id == note) {
@@ -120,9 +125,14 @@ const TadlabMini = () => {
       case "mousedown":
         osc1.triggerAttack(note, now)
         key.style.backgroundColor = "#f57936"
-        key.style.color = "ivory"
-        key.style.height = "295px"
-        key.style.boxShadow = "0px 0px 0px black, inset 2px 2px 2px black"
+        if ((key.className[4]) == "W") {
+          key.style.color = "ivory"
+          key.style.height = "295px"
+          key.style.boxShadow = "0px 0px 0px black, inset 2px 2px 2px black"
+        } else {
+          key.style.height = "180px"
+          key.style.boxShadow = "0px 1px 2px black;"
+        }
       default:
         return
     }

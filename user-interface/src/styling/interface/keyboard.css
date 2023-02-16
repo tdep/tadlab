@@ -38,7 +38,7 @@
   top: 0px;
   height: 295px;
   box-shadow: 0px 0px 0px black, inset 2px 2px 2px black;
-  transition: All 250ms ease;
+  transition: All 150ms ease;
 }
 
 .black {
@@ -69,6 +69,14 @@
   background-color: rgb(81, 80, 80);
 }
 
+.cToEBlack:active {
+  position: relative;
+  top: 0px;
+  height: 180px;
+  box-shadow: 0px 1px 2px black;
+  transition: All 150ms ease;
+}
+
 .fToB {
   position: relative;
 }
@@ -91,7 +99,7 @@
   top: 0px;
   height: 295px;
   box-shadow: 0px 0px 0px black, inset 2px 2px 2px black;
-  transition: All 250ms ease;
+  transition: All 150ms ease;
 }
 
 .fToBWhite:hover {
@@ -111,6 +119,14 @@
   color: ivory;
   margin: 0 0px 0 25px;
   box-shadow:  0px 2px 2px black;
+}
+
+.fToBBlack:active {
+  position: relative;
+  top: 0px;
+  height: 180px;
+  box-shadow: 0px 1px 2px black;
+  transition: All 150ms ease;
 }
 
 .fToBBlack:hover {
