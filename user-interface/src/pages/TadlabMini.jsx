@@ -2,7 +2,6 @@ import { Keys } from '../components/interface_components/Keys';
 import { togglePwr } from '../features/interfaceSlice'
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
-import MIDIAccess from './MIDIAccess';
 import * as Tone from 'tone'
 
 import '../../src/styling/interface/tadlabmini.css'
@@ -11,6 +10,7 @@ const TadlabMini = () => {
   const [octave, setOctave] = useState(3);
   const [onOff, setOnOff] = useState(false);
   const [state, setState] = useState("")
+  const oscillators = {}
   // let octave = 3
   const dispatch = useDispatch()
 
@@ -46,7 +46,7 @@ const TadlabMini = () => {
   ]
 
 
-  const now = Tone.now()
+  // const now = Tone.now()
   let gainLevel = 0
   const gainNode = new Tone.Gain(gainLevel).toDestination()
   
@@ -90,23 +90,42 @@ const TadlabMini = () => {
   // })
   
   const osc = new Tone.PolySynth(Tone.Synth).connect(gainNode)
+  console.log(osc)
+  osc.set({
+    options: {
+      volume: - 10
+    }
+
+  })
   // const osc = new Tone.PolySynth(Tone.AMSynth).connect(gainNode)
   // const osc = new Tone.PolySynth(Tone.FMSynth).connect(gainNode)
   // const osc = new Tone.PolySynth(Tone.MembraneSynth).connect(gainNode)
   // const osc = new Tone.PolySynth(Tone.PluckSynth).connect(gainNode)
-  console.log(osc.options)
-  osc.set({
-    options: {
-      oscillator: {
-        type: "sine"
-      }
-    }
-  })
-  console.log(osc.options.oscillator.type)
+
   osc.chain(rvb1, trem1)
   // osc.chain(rvb2, gainNode)
   // osc.chain(rvb3, gainNode)
   // osc.chain(rvb4, gainNode)
+
+  const noteAttack = (note) => {
+    const now = Tone.now()
+    oscillators[note.toString()] = osc;
+    setTimeout(() => { //delays the following functions in order to give space to the ramp down
+      osc.triggerAttack(note, now); //stops the oscillator from running
+      // osc.disconnect() //gets rid of the oscillator altogether
+    }, 20)
+    delete oscillators[note.toString()]
+  }
+
+  const noteRelease = (note) => {
+    const now = Tone.now()
+    oscillators[note.toString()]
+    setTimeout(() => { //delays the following functions in order to give space to the ramp down
+      osc.triggerRelease(note, now); //stops the oscillator from running
+      // osc.disconnect() //gets rid of the oscillator altogether
+    }, 20)
+    delete oscillators[note.toString()]
+  }
 
   const keyKey = {
     "a": `C${octave}`, "w": `C#${octave}`, "s": `D${octave}`, "e": `D#${octave}`, "d": `E${octave}`,
@@ -124,7 +143,8 @@ const TadlabMini = () => {
       let key = e.key
       let note = keyKey[key]
       let domKey = document.getElementById(note)
-      osc.triggerAttack(note, now)
+      // osc.triggerAttack(note, now)
+      noteAttack(note)
       domKey.style.backgroundColor = "#f57936"
       if ((domKey.className[4]) == "W") {
         domKey.style.height = "295px"
@@ -149,7 +169,8 @@ const TadlabMini = () => {
           return;
         }
         let key = e.target
-        osc.triggerRelease(note, now + 1)
+        // osc.triggerRelease(note, now + 1)
+        noteRelease(note)
         if (key.id == note) {
           if (key.className[4] == "W") {
             key.style.backgroundColor = "ivory"
@@ -167,7 +188,8 @@ const TadlabMini = () => {
       let key = e.key
       let note = keyKey[key]
       let domKey = document.getElementById(note)
-      osc.triggerRelease(note, now + 1)
+      // osc.triggerRelease(note, now + 1)
+      noteRelease(note)
       if ((domKey.className[4]) == "W") {
         domKey.style.backgroundColor = "ivory"
         domKey.style.color = "black"
@@ -191,7 +213,8 @@ const TadlabMini = () => {
     let note = key.id
     switch (e.type) {
       case "mousedown":
-        osc.triggerAttack(note, now)
+        // osc.triggerAttack(note, now)
+        noteAttack(note)
         key.style.backgroundColor = "#f57936"
         if ((key.className[4]) == "W") {
           key.style.color = "ivory"
@@ -210,7 +233,8 @@ const TadlabMini = () => {
   const handleRelease = (e) => {
     let key = e.target
     let note = key.id
-    osc.triggerRelease(note, now + 1)
+    // osc.triggerRelease(note, now + 1)
+    noteRelease(note)
     if ((key.className[4]) == "W") {
       key.style.backgroundColor = "ivory"
       key.style.color = "black"
@@ -726,7 +750,6 @@ const TadlabMini = () => {
         </div>
 
       </div>
-      <MIDIAccess />
     </div>
   )
 }
