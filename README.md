@@ -25,3 +25,7 @@ It's best not to try at this time, the project has been split into 3 branches, o
 Instead, enjoy this GIF of a demo below!
 
 In the future there will be projects to properly demonstrate all of the functionality.
+
+DEMO:
+
+![a short demo of the TADLAB](./
