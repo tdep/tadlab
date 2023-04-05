@@ -28,4 +28,6 @@ In the future there will be projects to properly demonstrate all of the function
 
 DEMO:
 
+The demo does generte sound, but the gif below does not.
+
 ![tadlab_demo](https://user-images.githubusercontent.com/75575727/230134785-dca05503-3564-4b3a-ab08-ff4bb3dfe042.gif)
