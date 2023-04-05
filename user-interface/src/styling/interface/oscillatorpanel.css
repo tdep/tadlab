@@ -1,0 +1,89 @@
+/* OSCILLATOR */
+
+#osc-inputs {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 8px;
+}
+
+#frequency-container {
+  display: flex;
+  flex-direction: row;
+}
+
+#oscOn {
+  display: flex;
+  height: 20px;
+  width: 20px; 
+  text-align: center; 
+  justify-content: center;
+  align-items: center;
+}
+
+#oscOff {
+  display: flex;
+  height: 20px;
+  width: 20px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+#osc-freq {
+  appearance: slider-vertical;
+  margin: 0;
+  padding: 0;
+  height: 80px;
+  width: 20px;
+}
+
+#waveform-container {
+  display: flex;
+  flex-direction: column;
+}
+
+/* LFO */
+
+#lfo-inputs {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 8px;
+}
+
+#lfo-frequency-container {
+  display: flex;
+  flex-direction: row;
+}
+
+#lfoOn {
+  display: flex;
+  height: 20px;
+  width: 20px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+#lfoOff {
+  display: flex;
+  height: 20px;
+  width: 20px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+#lfo1-freq {
+  appearance: slider-vertical;
+  margin: 0;
+  padding: 0;
+  height: 80px;
+  width: 20px;
+}
+
+#lfo-waveform-container {
+  display: flex;
+  flex-direction: column;
+}

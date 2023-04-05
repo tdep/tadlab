@@ -1,0 +1,11 @@
+#case {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 800px;
+  min-width: 800px;
+  border: 3px solid #552905;
+  border-radius: 6px;
+  background-color: #552905;
+}

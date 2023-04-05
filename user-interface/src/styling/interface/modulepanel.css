@@ -1,0 +1,318 @@
+#modulePanel {
+  display: flex;
+  flex-direction: row;
+  min-height: 450px;
+  min-width: 850px;
+  height: 70%;
+  width: 97%;
+  margin-top: 10px;
+  background-color: #a5a5a5;
+  border: 2px solid white;
+}
+
+/* Oscillator Panel */
+#oscillatorPanel {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  min-height: 450px;
+  min-width: 200px;
+  height: 100%;
+  width: 25%;
+  border: 2px dashed black;
+}
+
+#oscillatorContainer {
+  /* display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between; */
+  min-height: 225px;
+  min-width: 200px;
+  height: 50%;
+  width: 100%;
+  border: 2px dashed darkolivegreen
+}
+
+#lfoContainer {
+  min-height: 180px;
+  min-width: 200px;
+  height: 45%;
+  width: 100%;
+  border: 2px dashed darkolivegreen
+}
+
+#oscillatorPanel h1 {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+/* ADSR Panel */
+#adsrPanel {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  min-height: 450px;
+  min-width: 200px;
+  height: 100%;
+  width: 10%;
+  border: 2px dashed black;
+}
+
+#adsr-1-container {
+  min-height: 450px;
+  height: 100%;
+  width: 50%;
+  border: 2px dashed darkolivegreen
+}
+
+#adsr-2-container {
+  min-height: 450px;
+  height: 100%;
+  width: 50%;
+  border: 2px dashed darkolivegreen
+}
+
+/* EFX Panel */
+
+#efxPanel {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  min-height: 450px;
+  min-width: 120px;
+  height: 100%;
+  width: 10%;
+  border: 2px dashed black;
+}
+
+#reverbContainer {
+  min-height: 145px;
+  min-width: 120px;
+  height: 100%;
+  width: 100%;
+  border: 2px dashed darkolivegreen;
+}
+
+#delayContainer {
+  min-height: 145px;
+  min-width: 120px;
+  height: 100%;
+  width: 100%;
+  border: 2px dashed darkolivegreen;
+}
+
+#tremContainer {
+  min-height: 145px;
+  min-width: 120px;
+  height: 100%;
+  width: 100%;
+  border: 2px dashed darkolivegreen;
+}
+
+/* Kludge Panel */
+
+#kludgePanel {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  min-height: 450px;
+  min-width: 400px;
+  height: 100%;
+  width: 30%;
+  border: 2px dashed black;
+}
+
+#stepSequencerContainer {
+  min-height: 210px;
+  min-width: 400px;
+  height: 100%;
+  width: 100%;
+  border: 2px dashed darkolivegreen;
+}
+
+#mixerPanel {
+  min-height: 230px;
+  min-width: 400px;
+  height: 100%;
+  width: 100%;
+  border: 2px dashed darkolivegreen;
+}
+
+/* Output Panel */
+
+#outputPanel {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  min-height: 450px;
+  min-width: 190px;
+  height: 100%;
+  width: 15%;
+  border: 2px dashed black;
+}
+
+#vuMeterContainer {
+  min-height: 180px;
+  min-width: 190px;
+  height: 100%;
+  width: 10%;
+  border: 2px dashed darkolivegreen;
+}
+
+#oscilloscopeContainer {
+  min-height: 180px;
+  min-width: 190px;
+  height: 100%;
+  width: 10%;
+  border: 2px dashed darkolivegreen;
+}
+
+#controlContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  min-height: 80px;
+  min-width: 190px;
+  height: 100%;
+  width: 10%;
+  border: 1px solid black;
+}
+
+.volumeLabel {
+  font-size: 10px;
+}
+
+.panLabel {
+  font-size: 10px;
+}
+
+.chanTypeLabel {
+  font-size: 10px;
+}
+
+/* Controls */
+
+#outputControls {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  min-height: 50px;
+  height: 60%;
+  margin: 0;
+  padding: 0;
+}
+
+.outputControlLabel {
+  font-size: 10px;
+  text-align: center;
+  margin: 0;
+}
+
+#volume {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  margin: 0;
+}
+
+#volumeSlider {
+  appearance: slider-vertical;
+  height: 30px;
+  width: 30px;
+}
+
+#pan {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  margin: 0;
+}
+
+#panSlider {
+  appearance: slider-vertical;
+  height: 30px;
+  width: 30px;
+}
+
+#channelType {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  margin: 0;
+}
+
+#channelSlider {
+  appearance: slider-vertical;
+  height: 25px;
+  width: 25px;
+}
+
+
+/* Power */
+
+#indicatorsAndSwitch {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 30px;
+  height: 40%;
+}
+
+#powerSwitch {
+  display: flex;
+  flex-direction: row;
+  margin-left: 10px;
+}
+
+#power {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#pwrLED {
+  height: 12px;
+  width: 12px;
+  background-color: #9B2226;
+  border: 1px solid black;
+  border-radius: 50%;
+  margin-left: 5px;;
+}
+
+#pwrLabel {
+  font-size: 10px;
+}
+
+#outputSignal {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.signalLabel {
+  font-size: 10px;
+}
+
+.signalLED {
+  height: 12px;
+  width: 12px;
+  background-color: #9B2226;
+  border: 1px solid black;
+  border-radius: 50%;
+  margin: 0;
+}
+
+#outputSignalLED {
+  margin-left: 10px;
+}

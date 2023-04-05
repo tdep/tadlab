@@ -1,0 +1,73 @@
+.home {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+
+#homepageTitle {
+  height: 100%;
+  width: 250px;
+  position: fixed;
+  background-color: antiquewhite;
+  top: 0;
+  left: 0;
+  text-align: left;
+  padding-left: 8px;
+  padding-top: 8px;
+}
+
+#homepageTitle h1 {
+  color:#a5a5a5;
+  font-size: 70px;
+}
+
+#quickAccessContainer { /*main container */
+  display: inline;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  margin-left: 300px;
+  margin-right: auto;
+}
+
+#quickAccessContainer h1 {
+  font-size: 80px;
+  color: #a5a5a5 ;
+  margin: 0;
+  padding: 0;
+  text-align: right;
+}
+
+#quickLinksContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tiles {
+  display: grid;
+  grid-template-columns: repeat(3, 250px);
+  grid-template-rows: repeat(3, 250px);
+  gap: 10px;
+  margin-top: 50px;
+
+}
+.tile {
+  min-height: 100px;
+  min-width: 100px;
+  height: 250px;
+  width: 250px;
+  margin: 10px;
+  background-color: #fac935;
+}
+
+.tadlab {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  margin: 0;
+  padding: 0;
+}
+
+
+

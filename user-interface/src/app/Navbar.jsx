@@ -1,85 +1,37 @@
-import React from 'react'
-import { useEffect, useState } from 'react'
-import { FileDropdowns } from '../features/modals/file/FileDropdowns'
-import { HelpDropdowns } from '../features/modals/help/HelpDropdowns'
-import { AccountDropdowns } from '../features/modals/account/AccountDropdowns'
-import store from './store'
-import '../styling/Navbar.css'
+import React, { useState, useEffect, useContext } from 'react'
+import { AccountMenu } from '../features/modals/account/AccountMenu'
+import Cookies from 'js-cookie'
+import '../styling/Sidebar.css'
 
-const allState = store.getState()
-const loginState = allState.login.value.loggedIn
+
+
 export const Navbar = () => {
-  // When the user clicks on the button, toggle between hiding 
-  // and showing the dropdown content
-  const handleFileMenu = (e) => {
-    document.getElementById("fileDropdown").classList.toggle("show")
+  const openNav = (e) => {
+    console.log(e)
+    
   }
 
-  const handleHelpMenu = (e) => {
-    document.getElementById("helpDropdown").classList.toggle("show")
+  const closeNav = () => {
+
   }
 
-  const handleAccountMenu = (e) => {
-    document.getElementById("accountDropdown").classList.toggle("show")
-  }
-
-  // Close the dropdown menu if the user clicks outside of it
-  window.onclick = function(event) {
-    if (!event.target.matches('.dropbtn')) {
-      let dropdowns = document.getElementsByClassName("dropdown-content");
-      let i;
-      for (i = 0; i < dropdowns.length; i++) {
-        let openDropdown = dropdowns[i];
-        if (openDropdown.classList.contains('show')) {
-          openDropdown.classList.remove('show')
-        }
-      }
-    }
-  }
-
-  
   return (
-    <>
-      <nav>
-        <section>
-          <div className="navContent">
-            <div className="navMenu">
-              <div className="fileContainer">
-                <button id="fileMenu" onClick={handleFileMenu} className="dropbtn">File</button>
-                <div id="fileDropdown" className="dropdown-content">
-                  <FileDropdowns />
-                  <hr/>
-                  <label className="switch">
-                    <input type="checkbox" />
-                    <span className="slider round">☀️ 🌙</span>
-                    <p></p>
-                  </label>   
-                </div>
-              </div>
-              <div className="helpContainer">
-                <button id="helpMenu" onClick={handleHelpMenu} className="dropbtn">Help</button>
-                <div id="helpDropdown" className="dropdown-content">
-                  <HelpDropdowns />
-                </div>
-              </div>
-              <div className="accountContainer">
-                <button 
-                  id="accountMenu" 
-                  onClick={handleAccountMenu} 
-                  className="dropbtn">
-                  Account 
-                </button>
-                <div className="avatarContainer">
-                  <img id="avatar" src={loginState? '../src/assets/avatar1.png' : '../src/assets/avatar_signed_out.png' } />
-                </div>
-                <div id="accountDropdown" className="dropdown-content">
-                  <AccountDropdowns />
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </nav>
-    </>
+    <div>
+      <div id="accountContainer" className="sidebar-link-container" >
+        <button className="sidebar-button" onClick={openNav}>Account</button>
+        <div id="account" className="sidebar-window">
+          <AccountMenu />
+        </div>
+      </div>
+      <div id="aboutContainer" className="sidebar-link-container" onClick={openNav()}>
+        <button className="sidebar-button">About</button>
+      </div>
+      <div id="newProjectContainer" className="sidebar-link-container" onClick={openNav()}>
+        <button className="sidebar-button">New Project</button>
+      </div>
+      <div id="openProjectContainer" className="sidebar-link-container" onClick={openNav()}>
+        <button className="sidebar-button">Open Project</button>
+      </div>
+    </div>
   )
 }

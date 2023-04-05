@@ -1,0 +1,70 @@
+/* .menu-item {
+  font-size: 16px;
+  cursor: pointer;
+} */
+
+
+/* Modal Content/Box */
+/* .modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  /* padding: 20px;
+  border: 1px solid #888;
+  width: 40%;
+} */ 
+
+/* The Close Button */
+
+/* .close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+} */
+
+/* Add Zoom Animation */
+/* .animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s;
+}
+
+@-webkit-keyframes animatezoom {
+  from {-webkit-transform: scale(0)}
+  to {-webkit-transform: scale(1)}
+}
+
+@keyframes animatezoom {
+  from {transform: scale(0)}
+  to {transform: scale(1)}
+} */
+
+/* Extra style for the cancel button (red) */
+/* .cancelbtn {
+  width: auto;
+  padding: 10px 18px;
+  background-color: #f44336;
+} */
+
+/* Center avatar inside this container */
+/* .imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+} */
+
+/* Avatar image */
+/* img.avatar {
+  width: 40%;
+  border-radius: 50%;
+} */
+
+/* Add padding to containers */
+/* .container {
+  padding: 16px;
+} */

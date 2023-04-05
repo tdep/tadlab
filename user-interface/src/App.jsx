@@ -1,23 +1,26 @@
-import React, { useState } from 'react'
-import { BrowserRouter as Router } from 'react-router-dom'
+import React from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { Navbar } from './app/Navbar'
-import { MenuItem } from './features/modals/MenuItem'
-import store from './app/store'
+import LoginPage from './pages/LoginPage'
+import HomePage from './pages/HomePage'
+import UserPage from './pages/UserPage'
+import ProjectPage from './pages/ProjectPage'
+import TadlabMini from './pages/TadlabMini'
 import './styling/index.css'
-
-const allState = store.getState()
-export const isLoggedIn = allState.login.value.loggedIn
 
 const App = () => {
 
   return(
-    <Router>
-      <Navbar />
-      <div className="App">
-        <MenuItem />
-    
-      </div>
-    </Router>
+      <BrowserRouter>
+        <Routes>
+          <Route path={'/login'} element={<LoginPage />} />
+          <Route path={'/home'} element={<HomePage />} />
+          <Route path={'/userpage'} element={<UserPage />} />
+          <Route path={'/projectpage'} element={<ProjectPage />} />
+          <Route path={'/tadlabmini'} element={<TadlabMini />} />
+        </Routes>
+      </BrowserRouter>
+   
   )
 }
 

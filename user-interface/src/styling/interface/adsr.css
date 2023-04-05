@@ -1,0 +1,19 @@
+#adsr-panel {
+  display: flex;
+  flex-direction: column;
+}
+
+#adsr-sliders {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+#adsr-sliders input {
+  appearance: slider-vertical;
+  width: 20px;
+  height: 60px;
+  margin: 15px 10px;
+}
+

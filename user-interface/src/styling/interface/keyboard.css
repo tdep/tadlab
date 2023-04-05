@@ -1,0 +1,150 @@
+#keys {
+  display: flex;
+  flex-direction: row;
+  min-height: 300px;
+  min-width: 550px;
+  height: 100%;
+  width: 84%;
+  background-color: rgb(75, 75, 75);
+}
+
+.cToE {
+  position: relative;
+}
+.white {
+  display: flex;
+  flex-direction: row;
+}
+
+.cToEWhite {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: center;
+  min-height: 300px;
+  min-width: 50px;
+  border: 2px solid black;
+  border-radius: 0 0 5px 5px;
+  background-color: ivory;
+  box-shadow: inset 0px 2px 2px black, 0px 3px 3px black;
+}
+
+.cToEWhite:hover {
+  background-color: rgb(222, 217, 201);
+}
+
+.cToEWhite:active {
+  position: relative;
+  top: 0px;
+  height: 295px;
+  box-shadow: 0px 0px 0px black, inset 2px 2px 2px black;
+  transition: All 150ms ease;
+}
+
+.black {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  z-index: 1;
+  position: absolute;
+  top: 0;
+}
+
+.cToEBlack {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: center;
+  min-height: 185px;
+  min-width: 35px;
+  border: 2px solid black;
+  border-radius: 0 0 7px 7px;
+  background-color: black;
+  color: ivory;
+  margin: 0 0px 0 28px;
+  box-shadow: 0px 2px 2px black;
+}
+
+.top-contour {
+  height: 95%;
+  width: 98%;
+  margin-bottom: 8px;
+  border-width: 0 1px 1px 1px;
+  border-color: rgb(46, 46, 46);
+  border-style: solid;
+  border-radius: 0 0 20px 20px;
+  box-shadow: 0px 3px 9px rgb(46, 46, 46), inset 1px -3px 3px rgb(46, 46, 46), inset -1px -3px 3px rgb(46, 46, 46)
+}
+
+.cToEBlack:hover {
+  background-color: rgb(81, 80, 80);
+}
+
+.cToEBlack:active {
+  position: relative;
+  top: 0px;
+  height: 180px;
+  box-shadow: 0px 1px 2px black;
+  transition: All 150ms ease;
+}
+
+.fToB {
+  position: relative;
+}
+
+.fToBWhite {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: center;
+  min-height: 300px;
+  min-width: 50px;
+  border: 2px solid black;
+  border-radius: 0 0 5px 5px;
+  background-color: ivory;
+  box-shadow: inset 0px 2px 2px black, 0px 3px 3px black;
+}
+
+.fToBWhite:active {
+  position: relative;
+  top: 0px;
+  height: 295px;
+  box-shadow: 0px 0px 0px black, inset 2px 2px 2px black;
+  transition: All 150ms ease;
+}
+
+.fToBWhite:hover {
+  background-color: rgb(222, 217, 201);
+}
+
+.fToBBlack {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: center;
+  min-height: 185px;
+  min-width: 35px;
+  border: 2px solid black;
+  border-radius: 0 0 7px 7px;
+  background-color: black;
+  color: ivory;
+  margin: 0 0px 0 25px;
+  box-shadow:  0px 2px 2px black;
+}
+
+.fToBBlack:active {
+  position: relative;
+  top: 0px;
+  height: 180px;
+  box-shadow: 0px 1px 2px black;
+  transition: All 150ms ease;
+}
+
+.fToBBlack:hover {
+  background-color: rgb(81, 80, 80);
+}
+
+.keyLabel {
+  display: none;
+  pointer-events: none
+}

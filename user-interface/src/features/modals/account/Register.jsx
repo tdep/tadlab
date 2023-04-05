@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { useState, useEffect } from "react"
 import { closeModal } from "../modalSlice"
 import store from "../../../app/store"
-import '../../../styling/Modals.css'
+// import '../../../styling/Modals.css'
 
 const allState = store.getState()
 
