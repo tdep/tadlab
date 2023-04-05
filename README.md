@@ -11,12 +11,12 @@ For this project, I put a heavy emphasis on styling in order to learn more about
 
 Dependencies:
 
-reduxjs/toolkit ^1.9.2
-react-redux ^8.0.5
-node >= 16.17.0
-tonejs ^4.14.0
-ruby 3.0.5
-rails ~>6.1.7
+- reduxjs/toolkit ^1.9.2
+- react-redux ^8.0.5
+- node >= 16.17.0
+- tonejs ^4.14.0
+- ruby 3.0.5
+- rails ~>6.1.7
 
 To run:
 
