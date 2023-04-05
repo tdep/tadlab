@@ -7,11 +7,11 @@ import * as Tone from 'tone'
 import '../../src/styling/interface/tadlabmini.css'
 
 const TadlabMini = () => {
-  const [octave, setOctave] = useState(3);
+  // const [octave, setOctave] = useState(2);
   const [onOff, setOnOff] = useState(false);
   const [state, setState] = useState("")
   const oscillators = {}
-  // let octave = 3
+  let octave = 3
   const dispatch = useDispatch()
 
   const power = useSelector(state => state.interface.value.power)
@@ -741,8 +741,8 @@ const TadlabMini = () => {
               <div id="octave-buttons">
                 <label htmlFor="octave-btn-container">8ve</label>
                 <div id="octave-btn-container"></div>
-                <button id="octave-up" className="octave-btn" onClick={() => setOctave(octave + 1)}><b>+</b></button>
-                <button id="octave-down" className="octave-btn" onClick={() => setOctave(octave - 1)}><b>-</b></button>
+                <button id="octave-up" className="octave-btn" onClick={octave + 1}><b>+</b></button>
+                <button id="octave-down" className="octave-btn" onClick={octave - 1}><b>-</b></button>
                 <button id="note-names" className="show-notenames" onClick={showNoteNames}>C#</button>
               </div>
             </div>
