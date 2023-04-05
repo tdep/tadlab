@@ -28,4 +28,4 @@ In the future there will be projects to properly demonstrate all of the function
 
 DEMO:
 
-![a short demo of the TADLAB](./tadlab/user-interface/src/assets/tadlab_demo.gif)
+![tadlab_demo](https://user-images.githubusercontent.com/75575727/230134785-dca05503-3564-4b3a-ab08-ff4bb3dfe042.gif)
