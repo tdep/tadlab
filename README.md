@@ -24,10 +24,14 @@ In `./server` run `rails s`
 
 Then in `user-interface` run `npm ci run dev`
 
+Finally, navigate to localhost:5173/tadlabmini in your browser and have fun!
 
-It's best not to try at this time, the project has been split into 3 branches, one for a Ruby backend, one for the project itself, and the original Python backend.
+You will need to 'turn on' the unit and then 'turn-on' Oscillator-1 in order for sound to come out.
 
-Instead, enjoy this GIF of a demo below!
+It may also glitch and a note might get stuck, but just ctrl-r if that happens and voila!
+
+
+Or, enjoy this GIF of a demo below!
 
 In the future there will be projects to properly demonstrate all of the functionality.
 
