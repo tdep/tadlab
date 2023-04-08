@@ -20,6 +20,11 @@ Dependencies:
 
 To run:
 
+In `./server` run `rails s`
+
+Then in `user-interface` run `npm ci run dev`
+
+
 It's best not to try at this time, the project has been split into 3 branches, one for a Ruby backend, one for the project itself, and the original Python backend.
 
 Instead, enjoy this GIF of a demo below!
